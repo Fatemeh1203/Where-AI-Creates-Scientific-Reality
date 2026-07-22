@@ -5,6 +5,7 @@ export interface NavContent {
   about: string;
   portfolio: string;
   services: string;
+  simulator: string;
   contact: string;
   order: string;
   cta: string;

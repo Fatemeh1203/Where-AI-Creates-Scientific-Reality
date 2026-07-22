@@ -22,6 +22,7 @@ export const fa: SiteContent = {
     about: "درباره من",
     portfolio: "نمونه‌کارها",
     services: "خدمات",
+    simulator: "شبیه‌ساز",
     contact: "تماس",
     order: "شروع پروژه",
     cta: "شروع پروژه",

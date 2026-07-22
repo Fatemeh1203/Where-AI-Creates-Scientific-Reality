@@ -18,6 +18,7 @@ export function Navbar({ locale, nav, switchLabel }: { locale: Locale; nav: NavC
     { href: localeHref(locale, "/about"), label: nav.about },
     { href: localeHref(locale, "/portfolio"), label: nav.portfolio },
     { href: localeHref(locale, "/services"), label: nav.services },
+    { href: localeHref(locale, "/simulator"), label: nav.simulator },
     { href: localeHref(locale, "/contact"), label: nav.contact },
   ];
 

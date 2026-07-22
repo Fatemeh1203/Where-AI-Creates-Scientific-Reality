@@ -22,6 +22,7 @@ export const en: SiteContent = {
     about: "About",
     portfolio: "Portfolio",
     services: "Services",
+    simulator: "Simulator",
     contact: "Contact",
     order: "Start a Project",
     cta: "Start a Project",
