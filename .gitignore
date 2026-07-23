@@ -32,3 +32,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python (fiber-sensor research monitor)
+__pycache__/
+*.pyc
+.venv/
+# per-run logs are local only
+/logs/
