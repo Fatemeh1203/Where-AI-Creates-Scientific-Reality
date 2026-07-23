@@ -2,10 +2,12 @@ import Link from "next/link";
 import type { HeroContent, Locale } from "@/content/schema";
 import { localeHref } from "@/lib/paths";
 import { PersianPattern } from "./PersianPattern";
+import { HeroCanvas } from "./three/HeroCanvas";
 
 export function Hero({ locale, hero }: { locale: Locale; hero: HeroContent }) {
   return (
     <section className="relative overflow-hidden pb-20 pt-16 sm:pb-28 sm:pt-24">
+      <HeroCanvas />
       <div className="absolute inset-0 -z-10 bg-hero-grid bg-[length:48px_48px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]" />
       <PersianPattern
         id="hero"

@@ -8,12 +8,20 @@ import { FeatureGrid } from "@/components/FeatureGrid";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { CtaBanner } from "@/components/CtaBanner";
+import { ResumeTeaser } from "@/components/ResumeTeaser";
+import { Reveal } from "@/components/Reveal";
 import { localeHref } from "@/lib/paths";
+
+const resumeLabel = {
+  en: { eyebrow: "Résumé", title: "Physicist & AI engineer for hire" },
+  fa: { eyebrow: "رزومه", title: "فیزیک‌دان و مهندس هوش مصنوعی، آماده‌ی همکاری" },
+};
 
 export function HomeBody({ locale }: { locale: Locale }) {
   const content = getContent(locale);
   const { home, portfolio, nav } = content;
   const featured = portfolio.projects.slice(0, 3);
+  const rl = resumeLabel[locale];
 
   return (
     <PageShell locale={locale} content={content}>
@@ -33,6 +41,15 @@ export function HomeBody({ locale }: { locale: Locale }) {
 
       <section className="section-padding bg-night-900/40">
         <div className="container-page">
+          <SectionHeading eyebrow={rl.eyebrow} title={rl.title} />
+          <div className="mt-12">
+            <ResumeTeaser locale={locale} content={content} />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding">
+        <div className="container-page">
           <div className="mb-12 flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="text-center sm:text-start">
               <p className="eyebrow mb-2">{home.portfolioTeaserTitle}</p>
@@ -44,8 +61,10 @@ export function HomeBody({ locale }: { locale: Locale }) {
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project) => (
-              <ProjectCard key={project.slug} project={project} locale={locale} viewLabel={portfolio.viewCase} />
+            {featured.map((project, i) => (
+              <Reveal key={project.slug} index={i} className="h-full">
+                <ProjectCard project={project} locale={locale} viewLabel={portfolio.viewCase} />
+              </Reveal>
             ))}
           </div>
         </div>
