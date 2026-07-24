@@ -44,6 +44,42 @@ def _scholar_link(title: str) -> str:
     return f"https://scholar.google.com/scholar?q={quote_plus(title)}"
 
 
+# Titles must mention fibre-optic sensing to survive the loose Crossref match.
+_ON_TOPIC_TERMS = (
+    "fiber optic",
+    "fibre optic",
+    "fiber-optic",
+    "fibre-optic",
+    "optical fiber",
+    "optical fibre",
+    "fiber bragg",
+    "fibre bragg",
+    "fbg",
+    "distributed acoustic sensing",
+    "distributed temperature sensing",
+    "distributed fiber",
+    "distributed optical fiber",
+    "brillouin",
+    "rayleigh scatter",
+    "fabry-perot fiber",
+    "interferometric fiber",
+    "fiber laser sensor",
+    "fiber sensor",
+    "fibre sensor",
+    "photonic sensor",
+    "spr fiber",
+    "plasmonic fiber",
+    "lab-on-fiber",
+    "ofdr",
+    "otdr",
+)
+
+
+def _is_on_topic(title: str) -> bool:
+    t = title.lower()
+    return any(term in t for term in _ON_TOPIC_TERMS)
+
+
 def normalize(**kwargs: Any) -> dict[str, Any]:
     """Return a record with every field the pipeline expects, defaulted."""
     base: dict[str, Any] = {
@@ -178,6 +214,12 @@ def fetch_crossref(query: str, rows: int = MAX_RESULTS_PER_TOPIC) -> list[dict]:
             continue
         title = " ".join(it.get("title", []) or []).strip()
         if not title:
+            continue
+        # Crossref's bibliographic match is loose and returns many off-topic hits
+        # (battery separators, electrochemical sensors, power-grid "distributed
+        # generation", etc.). Require an on-topic term in the title so only
+        # genuine fiber-optic-sensing papers pass.
+        if not _is_on_topic(title):
             continue
         authors = ", ".join(
             f"{a.get('given', '')} {a.get('family', '')}".strip()
