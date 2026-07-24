@@ -1,0 +1,293 @@
+"""
+Analyst patch for the 2026-07-24 batch.
+
+The 2026-07-24 GitHub Action fetched 12 real, fresh arXiv papers but — with no
+ANTHROPIC_API_KEY configured — left every analysis field as the
+"[To be completed by analyst]" template placeholder. This script:
+
+  1. drops the two off-topic false positives the loose arXiv query pulled in
+     (a pure derivative-free-optimization paper, and a 2015 DTS review that
+     violates the recency criterion);
+  2. fills genuine bilingual (EN/FA) analysis for the 10 relevant papers,
+     grounded in each paper's real abstract;
+  3. fixes a few mis-assigned research areas and published months;
+  4. regenerates papers.csv, the daily report, figures and the README.
+
+Idempotent: safe to re-run.
+"""
+from __future__ import annotations
+
+from database import load_papers, papers_for_date, save_papers
+from figures import write_figures
+from readme_updater import update_readme
+from report import write_report
+
+DAY = "2026-07-24"
+
+# arXiv ids to drop as off-topic / out-of-scope.
+DROP = {"arXiv:2606.20304v1", "arXiv:1503.06261v1"}
+
+# Per-paper analyst content, keyed by id. Each grounds on the real abstract.
+PATCH: dict[str, dict] = {
+    "arXiv:2607.20392v1": {
+        "research_area": "Distributed Acoustic Sensing (DAS)",
+        "published": "2026-07",
+        "rating": 4,
+        "title_fa": "آرایه‌ی مکان‌یابی آکوستیک توزیع‌شده مستقر بر یک ربات پیچکی نرمِ واژگون‌شونده",
+        "summary_en": "This paper embeds a distributed acoustic sensing (DAS) array along the body of a soft, everting 'vine' robot to localise disaster victims by the sounds they make in confined, unstructured rubble. Because the robot grows and reshapes as it advances, its sensing array is not a fixed geometry — so the authors adapt a Steered Response Power with Phase Transform (SRP-PHAT) beamformer to a dynamic array, supporting both far-field direction-of-arrival estimation and, as the robot nears the source, near-field 3D localisation. Experiments map how body shape and control affect localisation accuracy. The significance is the marriage of soft robotics with distributed acoustic sensing: rather than a fiber laid on the ground, the sensing line is an actively deployed, shape-morphing probe that can worm into voids unreachable by rigid arrays. It is an unusually creative use of DAS-style acoustics for search-and-rescue.",
+        "summary_fa": "این مقاله یک آرایه‌ی حسگری آکوستیک توزیع‌شده (DAS) را در امتداد بدنه‌ی یک ربات نرمِ «پیچکی» و واژگون‌شونده جاسازی می‌کند تا قربانیان سوانح را از روی صدایشان در فضاهای بسته و آوارِ نامنظم مکان‌یابی کند. چون ربات همزمان با پیشروی رشد می‌کند و شکل عوض می‌کند، هندسه‌ی آرایه ثابت نیست؛ از این‌رو نویسندگان یک پرتوسازِ SRP-PHAT را برای آرایه‌ی پویا سازگار کرده‌اند که هم برآورد جهت‌ورود در میدان دور و هم — با نزدیک‌شدن ربات به منبع — مکان‌یابی سه‌بعدی در میدان نزدیک را پشتیبانی می‌کند. آزمایش‌ها نشان می‌دهند شکل بدنه و کنترل چگونه بر دقت مکان‌یابی اثر می‌گذارند. اهمیت کار در پیوند رباتیک نرم با حسگری آکوستیک توزیع‌شده است: خطِ حسگر به‌جای فیبری روی زمین، یک پروبِ فعالِ شکل‌پذیر است که می‌تواند به حفره‌های دور از دسترسِ آرایه‌های صلب نفوذ کند. کاربردی بسیار خلاقانه از آکوستیک نوع DAS برای جست‌وجو و نجات است.",
+        "problem_en": "Localising sound sources (disaster victims) in confined, unstructured spaces that rigid, fixed-geometry sensor arrays cannot reach.",
+        "problem_fa": "مکان‌یابی منابع صوتی (قربانیان سانحه) در فضاهای بسته و نامنظمی که آرایه‌های حسگر صلب و با هندسه‌ی ثابت به آن‌ها دسترسی ندارند.",
+        "innovation_en": "A DAS array carried by a shape-morphing soft everting robot, with a dynamic SRP-PHAT framework handling far-field DoA and near-field 3D localisation as geometry changes.",
+        "innovation_fa": "آرایه‌ی DAS سوارشده بر رباتِ نرمِ شکل‌پذیر، همراه با چارچوب پویای SRP-PHAT که با تغییر هندسه، جهت‌ورودِ میدان‌دور و مکان‌یابی سه‌بعدیِ میدان‌نزدیک را مدیریت می‌کند.",
+        "method_en": "Embed the distributed acoustic array along the vine-robot body; adapt SRP-PHAT beamforming to the time-varying array; characterise localisation vs. body shape/control in experiments.",
+        "method_fa": "جاسازی آرایه‌ی آکوستیک توزیع‌شده در بدنه‌ی ربات پیچکی؛ سازگارسازی پرتوسازی SRP-PHAT با آرایه‌ی متغیر با زمان؛ مشخصه‌یابی مکان‌یابی برحسب شکل/کنترل بدنه در آزمایش.",
+        "results_en": "Demonstrated far-field DoA and near-field 3D source localisation with a deployable morphing array, and characterised the design/control trade-offs affecting accuracy.",
+        "results_fa": "نمایش جهت‌ورودِ میدان‌دور و مکان‌یابی سه‌بعدیِ میدان‌نزدیک با آرایه‌ی قابل‌استقرارِ شکل‌پذیر و مشخص‌کردن مصالحه‌های طراحی/کنترل مؤثر بر دقت.",
+        "limitations_en": "Preprint; lab-scale experiments, real disaster acoustics (noise, reverberation, occlusion) and robustness at scale remain to be validated.",
+        "limitations_fa": "پیش‌چاپ؛ آزمایش‌ها آزمایشگاهی‌اند و آکوستیک واقعی سانحه (نوفه، پژواک، انسداد) و پایداری در مقیاس هنوز اعتبارسنجی نشده است.",
+        "applications_en": "Search-and-rescue in rubble/collapsed structures, confined-space inspection, soft-robotic exteroception.",
+        "applications_fa": "جست‌وجو و نجات در آوار/سازه‌های فروریخته، بازرسی فضای بسته، برون‌دریافتِ ربات نرم.",
+        "recommendation_en": "Yes if you work on acoustic arrays, soft robotics or SAR sensing; a fresh, creative cross-over contribution.",
+        "recommendation_fa": "بله اگر روی آرایه‌های آکوستیک، رباتیک نرم یا حسگری جست‌وجو-نجات کار می‌کنید؛ مشارکتی تازه و خلاقانه.",
+        "rating_reason_en": "Novel deployable-array concept with working localisation demos; held below 5 by lab-only validation and preprint status.",
+        "rating_reason_fa": "ایده‌ی نوِ آرایه‌ی قابل‌استقرار با نمایش‌های کارکردی مکان‌یابی؛ به‌دلیل اعتبارسنجی صرفاً آزمایشگاهی و وضعیت پیش‌چاپ کمتر از ۵.",
+    },
+    "arXiv:2607.18687v1": {
+        "research_area": "Distributed Acoustic Sensing (DAS)",
+        "published": "2026-07",
+        "rating": 4,
+        "title_fa": "OFDM بدون پیشوند چرخه‌ای با بازسازیِ استفاده‌مجددِ دنباله برای حسگری آکوستیک توزیع‌شده",
+        "summary_en": "In coherent DAS, OFDM probing lets you reconstruct the distributed Rayleigh backscatter channel in the frequency domain, but the cyclic prefix (CP) that OFDM normally requires lengthens the probe period and lowers the slow-time Nyquist limit — capping how fast each range cell can be sampled. This paper proposes a repeated CP-free OFDM waveform in which the tail of the previous useful block acts as a virtual cyclic extension, removing the explicit CP overhead. The authors derive a finite-memory range condition under which tail-reuse reconstruction is exact and identify a 'circular folding' failure mode when the useful period is shorter than the fiber's channel memory. The payoff is a higher effective acoustic bandwidth (faster slow-time sampling) for the same block length and fiber, which matters for high-frequency DAS applications. It is a focused, rigorous waveform-engineering contribution rather than a new sensor.",
+        "summary_fa": "در DAS همدوس، پروب‌کردن با OFDM امکان بازسازیِ کانالِ پس‌پراکنشِ ریلیِ توزیع‌شده را در حوزه‌ی فرکانس می‌دهد، اما پیشوند چرخه‌ای (CP) که OFDM معمولاً نیاز دارد دوره‌ی پروب را بلندتر و حد نایکوئیستِ زمان‌ـکند را پایین‌تر می‌آورد و سرعت نمونه‌برداری هر سلولِ برد را محدود می‌کند. این مقاله یک شکل‌موجِ OFDM بدونِ CP و تکرارشونده پیشنهاد می‌دهد که در آن دنباله‌ی بلوکِ مفیدِ قبلی همچون یک امتدادِ چرخه‌ایِ مجازی عمل می‌کند و سربارِ صریحِ CP را حذف می‌سازد. نویسندگان یک شرطِ بردِ حافظه‌ی محدود استخراج می‌کنند که تحت آن بازسازیِ استفاده‌مجددِ دنباله دقیق است و یک حالتِ خرابیِ «تاخوردگیِ چرخه‌ای» را زمانی که دوره‌ی مفید کوتاه‌تر از حافظه‌ی کانالِ فیبر است شناسایی می‌کنند. دستاورد، پهنای‌باندِ آکوستیکِ مؤثرِ بالاتر (نمونه‌برداریِ زمان‌ـکندِ سریع‌تر) برای همان طولِ بلوک و فیبر است که برای کاربردهای DAS با فرکانس بالا مهم است. مشارکتی متمرکز و دقیق در مهندسیِ شکل‌موج است، نه یک حسگرِ جدید.",
+        "problem_en": "The cyclic prefix in OFDM-based DAS wastes probe time and lowers the achievable acoustic (slow-time) sampling rate per range cell.",
+        "problem_fa": "پیشوند چرخه‌ای در DASِ مبتنی بر OFDM زمانِ پروب را هدر می‌دهد و نرخِ نمونه‌برداریِ آکوستیکِ (زمان‌ـکندِ) قابل‌دستیابی در هر سلولِ برد را پایین می‌آورد.",
+        "innovation_en": "A CP-free repeated OFDM waveform using the previous block's tail as a virtual cyclic extension, with a proven finite-memory range condition for exact reconstruction.",
+        "innovation_fa": "شکل‌موجِ OFDMِ تکرارشونده و بدونِ CP که دنباله‌ی بلوک قبلی را همچون امتدادِ چرخه‌ایِ مجازی به‌کار می‌برد، همراه با شرطِ اثبات‌شده‌ی بردِ حافظه‌ی محدود برای بازسازیِ دقیق.",
+        "method_en": "Signal-model derivation of tail-reuse reconstruction; identification of circular-folding limits; analysis of bandwidth gain for fixed block length and fiber memory.",
+        "method_fa": "استخراجِ مدلِ سیگنالِ بازسازیِ استفاده‌مجددِ دنباله؛ شناساییِ حدودِ تاخوردگیِ چرخه‌ای؛ تحلیلِ بهره‌ی پهنای‌باند برای طولِ بلوک و حافظه‌ی فیبرِ ثابت.",
+        "results_en": "Removing the CP raises the effective slow-time Nyquist limit (higher acoustic bandwidth) while keeping reconstruction exact within the derived range condition.",
+        "results_fa": "حذفِ CP حدِ نایکوئیستِ زمان‌ـکندِ مؤثر (پهنای‌باندِ آکوستیکِ بالاتر) را افزایش می‌دهد و در محدوده‌ی شرطِ استخراج‌شده بازسازی را دقیق نگه می‌دارد.",
+        "limitations_en": "Preprint; benefits bounded by the finite-memory/circular-folding condition; experimental field validation over long fibers not yet shown here.",
+        "limitations_fa": "پیش‌چاپ؛ مزایا محدود به شرطِ حافظه‌ی محدود/تاخوردگیِ چرخه‌ای است؛ اعتبارسنجیِ میدانیِ تجربی روی فیبرهای بلند در اینجا نشان داده نشده است.",
+        "applications_en": "High-bandwidth coherent DAS interrogation for seismics, acoustics and high-frequency vibration monitoring.",
+        "applications_fa": "بازخوانیِ DASِ همدوسِ پهن‌باند برای لرزه‌نگاری، آکوستیک و پایشِ ارتعاشِ فرکانس‌بالا.",
+        "recommendation_en": "Yes for DAS interrogator/waveform designers; niche but rigorous and directly useful.",
+        "recommendation_fa": "بله برای طراحانِ بازخوان/شکل‌موجِ DAS؛ تخصصی اما دقیق و مستقیماً کاربردی.",
+        "rating_reason_en": "Solid, well-derived waveform improvement with a clear bandwidth benefit; niche scope and preprint status keep it at four.",
+        "rating_reason_fa": "بهبودِ شکل‌موجِ مستحکم و خوش‌استخراج با بهره‌ی روشنِ پهنای‌باند؛ دامنه‌ی تخصصی و وضعیت پیش‌چاپ آن را در چهار نگه می‌دارد.",
+    },
+    "arXiv:2607.16157v1": {
+        "research_area": "Distributed Acoustic Sensing (DAS)",
+        "published": "2026-07",
+        "rating": 4,
+        "title_fa": "تصویربرداریِ پهن‌باندِ چنددهانه‌ایِ غیرفعالِ موجِ اسکولت با حسگریِ آکوستیکِ توزیع‌شده‌ی بستر دریا",
+        "summary_en": "This work turns a 51-km seabed DAS cable on the Texas Gulf Coast into a passive shear-wave imaging instrument by exploiting the broadband Scholte-wave illumination that shallow-water ocean forcing naturally provides. Instead of active sources, it processes the ambient uncorrelated wavefield directly, using long-duration frequency–wavenumber stacking and a multi-aperture strategy that keeps high-frequency spatial localisation while still resolving low-frequency modes. Constant-wavenumber slices let the authors track multimode dispersion (~0.3–4.5 Hz) consistently along the array, feeding 400 one-dimensional inversions that assemble a pseudo-2D shear-wave velocity section. The contribution is a practical, fully passive workflow for offshore geotechnical characterisation from existing seabed fiber — valuable because active marine surveys are expensive and environmentally sensitive. It shows DAS maturing into a continuous, low-impact tool for shallow-marine site characterisation.",
+        "summary_fa": "این کار یک کابلِ DASِ بستر دریا به طولِ ۵۱ کیلومتر در ساحلِ خلیجِ تگزاس را با بهره‌گیری از روشناییِ پهن‌باندِ موجِ اسکولت — که نیرو‌ورزیِ اقیانوسِ کم‌عمق به‌طور طبیعی فراهم می‌کند — به یک ابزارِ غیرفعالِ تصویربرداریِ موجِ برشی بدل می‌کند. به‌جای منابعِ فعال، میدانِ موجِ ناهمبستهِ محیطی را مستقیماً پردازش می‌کند؛ با انباشتِ فرکانس–عددموجِ طولانی‌مدت و راهبردِ چنددهانه‌ای که هم مکان‌یابیِ فضاییِ فرکانس‌بالا را حفظ و هم مُدهای فرکانس‌پایین را تفکیک می‌کند. برش‌های عددموجِ ثابت به نویسندگان اجازه می‌دهد پاشندگیِ چندمُدی (حدود ۰٫۳ تا ۴٫۵ هرتز) را به‌طورِ سازگار در امتدادِ آرایه ردیابی کنند و ۴۰۰ وارون‌سازیِ یک‌بُعدی را تغذیه کنند که یک مقطعِ شبه‌دوبُعدیِ سرعتِ موجِ برشی می‌سازد. دستاورد، یک جریانِ کارِ عملی و کاملاً غیرفعال برای مشخصه‌یابیِ ژئوتکنیکِ فراساحلی از فیبرِ موجودِ بستر دریاست — ارزشمند، چون برداشت‌های فعالِ دریایی گران و از نظر محیطی حساس‌اند.",
+        "problem_en": "Characterising offshore shallow-marine shear-wave structure without costly, environmentally invasive active seismic sources.",
+        "problem_fa": "مشخصه‌یابیِ ساختارِ موجِ برشیِ دریاییِ کم‌عمقِ فراساحلی بدونِ منابعِ لرزه‌ایِ فعالِ گران و مخرّبِ محیط.",
+        "innovation_en": "Fully passive multi-aperture Scholte-wave imaging from ambient ocean noise recorded on a 51-km seabed DAS cable, preserving both high- and low-frequency modal content.",
+        "innovation_fa": "تصویربرداریِ کاملاً غیرفعالِ چنددهانه‌ایِ موجِ اسکولت از نوفه‌ی محیطیِ اقیانوس که روی کابلِ DASِ بستر دریا به طولِ ۵۱ کیلومتر ثبت شده و محتوای مُدیِ فرکانس‌بالا و پایین را حفظ می‌کند.",
+        "method_en": "Direct processing of the uncorrelated wavefield; long-duration f–k stacking; multi-aperture constant-wavenumber tracking; 400 1D dispersion inversions to a pseudo-2D Vs section.",
+        "method_fa": "پردازشِ مستقیمِ میدانِ موجِ ناهمبسته؛ انباشتِ f–kِ طولانی‌مدت؛ ردیابیِ چنددهانه‌ایِ عددموجِ ثابت؛ ۴۰۰ وارون‌سازیِ پاشندگیِ یک‌بُعدی به مقطعِ شبه‌دوبُعدیِ سرعتِ برشی.",
+        "results_en": "Recovered multimode dispersion over ~0.3–4.5 Hz and a pseudo-2D shear-velocity profile along 51 km, demonstrating passive geotechnical imaging from seabed fiber.",
+        "results_fa": "بازیابیِ پاشندگیِ چندمُدی در حدودِ ۰٫۳ تا ۴٫۵ هرتز و پروفایلِ شبه‌دوبُعدیِ سرعتِ برشی در طولِ ۵۱ کیلومتر، که تصویربرداریِ ژئوتکنیکِ غیرفعال از فیبرِ بستر دریا را نشان می‌دهد.",
+        "limitations_en": "Preprint; depends on adequate ambient Scholte illumination and site conditions; 1D-stitched pseudo-2D imaging is an approximation of true 2D/3D structure.",
+        "limitations_fa": "پیش‌چاپ؛ به روشناییِ کافیِ اسکولتِ محیطی و شرایطِ محل وابسته است؛ تصویربرداریِ شبه‌دوبُعدیِ دوخته‌شده از مقاطعِ یک‌بُعدی تقریبی از ساختارِ واقعیِ دو/سه‌بُعدی است.",
+        "applications_en": "Offshore geotechnical site characterisation, wind-farm foundations, marine geohazard and sediment studies from existing seabed cables.",
+        "applications_fa": "مشخصه‌یابیِ محلِ ژئوتکنیکِ فراساحلی، پیِ مزارعِ بادی، مطالعاتِ مخاطراتِ زمینیِ دریایی و رسوب از کابل‌های موجودِ بستر دریا.",
+        "recommendation_en": "Yes for marine geophysics and DAS practitioners; a strong real-data demonstration of passive DAS imaging.",
+        "recommendation_fa": "بله برای ژئوفیزیکِ دریایی و متخصصانِ DAS؛ نمایشی قوی با داده‌ی واقعی از تصویربرداریِ غیرفعالِ DAS.",
+        "rating_reason_en": "Real 51-km field data and a complete passive workflow; not a new sensing principle, and still a preprint.",
+        "rating_reason_fa": "داده‌ی میدانیِ واقعیِ ۵۱ کیلومتری و جریانِ کارِ غیرفعالِ کامل؛ اصلِ حسگریِ تازه‌ای نیست و همچنان پیش‌چاپ است.",
+    },
+    "arXiv:2607.15925v1": {
+        "research_area": "Photonic / Silicon-Photonics Sensors",
+        "published": "2026-07",
+        "rating": 5,
+        "title_fa": "دینامیکِ همنهشتیِ زیرمیکروثانیه در یک نانوکاواکِ نوری",
+        "summary_en": "This is a standout result: a fibre-integrated silicon-photonic sensor that resolves the conformational (shape-changing) dynamics of single, unlabelled proteins at sub-microsecond timescales, continuously and over minutes. Microsecond conformational changes drive much of protein function, but until now they could only be seen by ensemble averaging, and single-molecule attempts were defeated by insufficient speed and by the protein's own Brownian motion smearing the signal. The authors overcome both barriers at once by combining far-sub-wavelength optical field confinement (for extreme sensitivity) with unusually high field uniformity that suppresses Brownian motion roughly sixtyfold. Demonstrated on single ferritin molecules, it delivers label-free, single-shot, sub-microsecond observation — a genuine capability leap for biophysics. Because the sensor is fibre-integrated silicon photonics, it also points toward compact, connectorised single-molecule instruments rather than bulky microscopy, which is why it sits squarely in the photonic-sensing frontier this monitor tracks.",
+        "summary_fa": "این یک نتیجه‌ی برجسته است: یک حسگرِ سیلیکون‌فوتونیکِ مجتمع با فیبر که دینامیکِ همنهشتیِ (تغییرِ شکلِ) تک‌پروتئین‌های بدونِ برچسب را در بازه‌های زیرمیکروثانیه، پیوسته و در طولِ چند دقیقه تفکیک می‌کند. تغییراتِ همنهشتیِ میکروثانیه‌ای بخشِ بزرگی از کارکردِ پروتئین را هدایت می‌کنند، اما تاکنون تنها با میانگین‌گیریِ گروهی دیده می‌شدند و تلاش‌های تک‌مولکولی به‌دلیلِ سرعتِ ناکافی و حرکتِ براونیِ خودِ پروتئین که سیگنال را محو می‌کند شکست می‌خوردند. نویسندگان هر دو مانع را هم‌زمان برطرف می‌کنند: با ترکیبِ محدودسازیِ میدانِ نوریِ بسیار زیرِ طولِ موج (برای حساسیتِ فوق‌العاده) و یکنواختیِ بالای میدان که حرکتِ براونی را حدودِ شصت برابر سرکوب می‌کند. این حسگر روی تک‌مولکولِ فریتین نشان داده شده و مشاهده‌ی بدونِ برچسب، تک‌شات و زیرمیکروثانیه را ممکن می‌سازد — جهشی واقعی در توانِ زیست‌فیزیک. چون حسگر سیلیکون‌فوتونیکِ مجتمع با فیبر است، به سمتِ ابزارهای فشرده و کانکتوری تک‌مولکولی نیز اشاره دارد.",
+        "problem_en": "Observing sub-microsecond single-protein conformational dynamics label-free, without ensemble averaging and without Brownian-motion smearing.",
+        "problem_fa": "مشاهده‌ی دینامیکِ همنهشتیِ زیرمیکروثانیه‌ی تک‌پروتئین به‌صورتِ بدونِ برچسب، بدونِ میانگین‌گیریِ گروهی و بدونِ محوشدگیِ ناشی از حرکتِ براونی.",
+        "innovation_en": "A fibre-integrated silicon-photonic nanocavity combining far-sub-wavelength field confinement with high field uniformity that suppresses protein Brownian motion ~60×.",
+        "innovation_fa": "نانوکاواکِ سیلیکون‌فوتونیکِ مجتمع با فیبر که محدودسازیِ میدانِ بسیار زیرِ طولِ موج را با یکنواختیِ بالای میدان که حرکتِ براونیِ پروتئین را حدودِ ۶۰ برابر سرکوب می‌کند ترکیب می‌کند.",
+        "method_en": "Single-shot optical readout of individual proteins (e.g. ferritin) in the fibre-coupled nanocavity; continuous sub-microsecond time series over minutes.",
+        "method_fa": "بازخوانیِ نوریِ تک‌شات از تک‌پروتئین‌ها (مثلِ فریتین) در نانوکاواکِ جفت‌شده با فیبر؛ سریِ زمانیِ پیوسته‌ی زیرمیکروثانیه در طولِ چند دقیقه.",
+        "results_en": "Resolved single-molecule conformational dynamics at sub-microsecond speed with ~60× Brownian-motion suppression, sustained continuously over minute-long measurements.",
+        "results_fa": "تفکیکِ دینامیکِ همنهشتیِ تک‌مولکولی با سرعتِ زیرمیکروثانیه و سرکوبِ حدودِ ۶۰ برابریِ حرکتِ براونی، به‌طورِ پیوسته در اندازه‌گیری‌های چنددقیقه‌ای.",
+        "limitations_en": "Preprint; demonstrated on model proteins; throughput, generalisation across protein types and manufacturability of the nanocavity need further work.",
+        "limitations_fa": "پیش‌چاپ؛ روی پروتئین‌های مدل نشان داده شده؛ توانِ عبور، تعمیم به انواعِ پروتئین و ساخت‌پذیریِ نانوکاواک نیازمندِ کارِ بیشتر است.",
+        "applications_en": "Single-molecule biophysics, drug-target dynamics, label-free biosensing, lab-on-fiber diagnostics.",
+        "applications_fa": "زیست‌فیزیکِ تک‌مولکولی، دینامیکِ هدف-داروی، زیست‌حسگریِ بدونِ برچسب، تشخیصِ آزمایشگاه‌روی‌فیبر.",
+        "recommendation_en": "Strongly yes — a landmark capability at the fiber/photonics/biophysics interface; read in full.",
+        "recommendation_fa": "قویاً بله — یک توانِ نقطه‌عطف در مرزِ فیبر/فوتونیک/زیست‌فیزیک؛ کامل بخوانید.",
+        "rating_reason_en": "Genuine capability breakthrough (label-free, single-shot, sub-µs) with a clear physical mechanism and real single-molecule data; top marks despite preprint status.",
+        "rating_reason_fa": "جهشِ توانمندیِ واقعی (بدونِ برچسب، تک‌شات، زیرمیکروثانیه) با سازوکارِ فیزیکیِ روشن و داده‌ی واقعیِ تک‌مولکولی؛ بالاترین امتیاز به‌رغمِ وضعیتِ پیش‌چاپ.",
+    },
+    "arXiv:2607.11255v1": {
+        "research_area": "Distributed Fiber Optic Sensing (DFOS)",
+        "published": "2026-07",
+        "rating": 4,
+        "title_fa": "یک تشکِ نرمِ نزدیک‌پوش مبتنی بر حسگریِ توزیع‌شده‌ی فیبر نوری برای پایشِ فیزیولوژیک",
+        "summary_en": "This paper brings distributed optical fiber sensing (DOFS) into wearable/near-body health monitoring by building a soft mat in which a single optical fiber, read out by Rayleigh-based optical frequency-domain reflectometry (OFDR), becomes a continuous, spatially resolved pressure/strain sensor. DOFS is attractive here for reasons classical sensors are not: it is flexible, thin, immune to electromagnetic interference and offers high metrological performance, while OFDR gives the fine spatial resolution needed to map body-contact mechanics. The authors note that despite these strengths, OFDR-DOFS has been largely unexplored for biomedical use, and they target exactly that gap with a conformable 'nearable' mat for physiological monitoring (e.g. respiration, ballistocardiography-type motion, posture/pressure mapping). The value is a comfortable, unobtrusive, electronics-free-at-the-body sensing surface. As a preprint it establishes feasibility; clinical-grade accuracy, motion-artifact rejection and long-term robustness are the natural next questions.",
+        "summary_fa": "این مقاله حسگریِ توزیع‌شده‌ی فیبر نوری (DOFS) را به پایشِ سلامتِ پوشیدنی/نزدیک‌بدن می‌آورد؛ با ساختِ یک تشکِ نرم که در آن یک فیبرِ نوریِ واحد — بازخوانی‌شده با بازتاب‌سنجیِ حوزه‌فرکانسِ نوریِ (OFDR) مبتنی بر ریلی — به یک حسگرِ پیوسته و فضاـتفکیک‌شده‌ی فشار/کرنش بدل می‌شود. DOFS اینجا به دلایلی جذاب است که حسگرهای کلاسیک نیستند: انعطاف‌پذیر، نازک، مصون از تداخلِ الکترومغناطیسی و با کاراییِ اندازه‌شناختیِ بالا؛ و OFDR تفکیکِ فضاییِ ظریفِ لازم برای نگاشتِ مکانیکِ تماسِ بدن را می‌دهد. نویسندگان اشاره می‌کنند که با وجودِ این نقاطِ قوت، OFDR-DOFS برای کاربردِ زیست‌پزشکی عمدتاً کاوش‌نشده مانده و دقیقاً همین شکاف را با یک تشکِ «نزدیک‌پوشِ» شکل‌پذیر برای پایشِ فیزیولوژیک (مثلِ تنفس، حرکتِ نوعِ بالیستوکاردیوگرافی، نگاشتِ وضعیت/فشار) هدف می‌گیرند. ارزشِ کار یک سطحِ حسگریِ راحت، نامحسوس و بدونِ الکترونیک روی بدن است. به‌عنوانِ پیش‌چاپ امکان‌پذیری را اثبات می‌کند؛ دقتِ بالینی، حذفِ آرتیفکتِ حرکتی و پایداریِ بلندمدت پرسش‌های بعدی‌اند.",
+        "problem_en": "Bringing comfortable, spatially-resolved, EMI-immune physiological sensing to the body — a gap OFDR-based DOFS had not addressed for biomedicine.",
+        "problem_fa": "آوردنِ حسگریِ فیزیولوژیکِ راحت، فضاـتفکیک‌شده و مصون از تداخل به بدن — شکافی که OFDR-DOFS برای زیست‌پزشکی به آن نپرداخته بود.",
+        "innovation_en": "A soft 'nearable' mat embedding a single fiber read by OFDR (Rayleigh) as a continuous, conformable pressure/strain sensor for physiological monitoring.",
+        "innovation_fa": "یک تشکِ نرمِ «نزدیک‌پوش» که یک فیبرِ واحد را با OFDR (ریلی) به‌عنوانِ حسگرِ پیوسته و شکل‌پذیرِ فشار/کرنش برای پایشِ فیزیولوژیک جاسازی می‌کند.",
+        "method_en": "Rayleigh OFDR interrogation of a fiber embedded in a soft mat; spatially resolved mechanical measurement of body-contact signals.",
+        "method_fa": "بازخوانیِ OFDRِ ریلی از فیبرِ جاسازی‌شده در تشکِ نرم؛ اندازه‌گیریِ مکانیکیِ فضاـتفکیک‌شده‌ی سیگنال‌های تماسِ بدن.",
+        "results_en": "Demonstrated feasibility of conformable, high-spatial-resolution DOFS for physiological monitoring on a comfortable near-body surface.",
+        "results_fa": "نمایشِ امکان‌پذیریِ DOFالسِ شکل‌پذیر و با تفکیکِ فضاییِ بالا برای پایشِ فیزیولوژیک روی یک سطحِ راحتِ نزدیک‌بدن.",
+        "limitations_en": "Preprint; clinical validation, motion-artifact handling, calibration and durability under repeated loading remain to be established.",
+        "limitations_fa": "پیش‌چاپ؛ اعتبارسنجیِ بالینی، مدیریتِ آرتیفکتِ حرکتی، کالیبراسیون و دوام تحتِ بارگذاریِ مکرر باید اثبات شوند.",
+        "applications_en": "Contactless/near-body vital-sign monitoring, sleep and posture sensing, smart beds/mats, rehabilitation.",
+        "applications_fa": "پایشِ علائمِ حیاتیِ بی‌تماس/نزدیک‌بدن، حسگریِ خواب و وضعیتِ بدن، تخت/تشکِ هوشمند، توان‌بخشی.",
+        "recommendation_en": "Yes for biomedical-sensing and DOFS researchers; a promising new application niche for OFDR.",
+        "recommendation_fa": "بله برای پژوهشگرانِ حسگریِ زیست‌پزشکی و DOFS؛ یک حوزه‌ی کاربردیِ نوِ امیدبخش برای OFDR.",
+        "rating_reason_en": "Opens a genuinely underexplored biomedical niche for OFDR-DOFS with a working prototype; capped by early-stage, preprint validation.",
+        "rating_reason_fa": "یک حوزه‌ی زیست‌پزشکیِ به‌راستی کم‌کاوش‌شده را برای OFDR-DOFS با نمونه‌ی اولیه‌ی کارکردی می‌گشاید؛ به‌دلیلِ اعتبارسنجیِ اولیه و پیش‌چاپ محدود شده است.",
+    },
+    "arXiv:2606.11940v1": {
+        "research_area": "Photonic / Silicon-Photonics Sensors",
+        "published": "2026-06",
+        "rating": 4,
+        "title_fa": "شبکه‌های تشدیدگرِ حلقه‌ریزِ خودـتپنده برای آشکارسازیِ رویدادِ کارآمد از نظرِ پهنای‌باند در یک حسگرِ فیبر نوری",
+        "summary_en": "This paper attacks a real bottleneck in optical sensing: the signals coming off optical sensors are often slow (sub-MHz), yet we usually digitise and process them with fast, power-hungry electronics. The authors show experimentally that a network of self-pulsing microring resonators (MRRs) can process such slow optical-sensor signals directly in the optical domain. Ordinarily optical operations have too short a memory to handle slow dynamics, but the self-pulsing dynamics of the MRR network supply the needed temporal memory, enabling bandwidth-efficient event detection from a fiber optic sensor without first offloading everything to digital electronics. The appeal is lower latency, lower energy and reduced data volume — appealing for edge and always-on sensing. It is an early, physics-driven demonstration of in-photonics processing for sensor read-out rather than a deployed product, but it fits the broader trend of pushing intelligence into the optical layer.",
+        "summary_fa": "این مقاله به یک گلوگاهِ واقعیِ حسگریِ نوری می‌پردازد: سیگنال‌های خروجیِ حسگرهای نوری اغلب کُند (زیرِ مگاهرتز) هستند، اما معمولاً آن‌ها را با الکترونیکِ سریع و پرمصرف رقمی و پردازش می‌کنیم. نویسندگان به‌طورِ تجربی نشان می‌دهند که یک شبکه از تشدیدگرهای حلقه‌ریزِ (MRR) خودـتپنده می‌تواند چنین سیگنال‌های کُندِ حسگرِ نوری را مستقیماً در حوزه‌ی نوری پردازش کند. معمولاً عملیاتِ نوری حافظه‌ی زمانیِ کوتاهی برای مدیریتِ دینامیکِ کُند دارند، اما دینامیکِ خودـتپشِ شبکه‌ی MRR حافظه‌ی زمانیِ لازم را فراهم می‌کند و آشکارسازیِ رویدادِ کارآمد از نظرِ پهنای‌باند از یک حسگرِ فیبر نوری را بدونِ انتقالِ همه‌چیز به الکترونیکِ رقمی ممکن می‌سازد. جذابیت در تأخیرِ کمتر، انرژیِ کمتر و حجمِ داده‌ی کاهش‌یافته است — مطلوب برای حسگریِ لبه و همیشه‌روشن. این یک نمایشِ اولیه و فیزیک‌محور از پردازشِ درون‌فوتونیکی برای بازخوانیِ حسگر است، نه یک محصولِ مستقر، اما با روندِ کلیِ راندنِ هوش به لایه‌ی نوری هم‌خوان است.",
+        "problem_en": "Slow (sub-MHz) optical-sensor signals normally require fast, power-hungry digital electronics; optics alone lacks the memory to process them.",
+        "problem_fa": "سیگنال‌های کُندِ (زیرِ مگاهرتز) حسگرِ نوری معمولاً به الکترونیکِ رقمیِ سریع و پرمصرف نیاز دارند؛ نور به‌تنهایی حافظه‌ی لازم برای پردازشِ آن‌ها را ندارد.",
+        "innovation_en": "Using self-pulsing dynamics in a microring-resonator network to supply temporal memory, enabling direct in-optics, bandwidth-efficient event detection from a fiber sensor.",
+        "innovation_fa": "به‌کارگیریِ دینامیکِ خودـتپش در شبکه‌ی تشدیدگرِ حلقه‌ریز برای فراهم‌کردنِ حافظه‌ی زمانی، که آشکارسازیِ رویدادِ مستقیمِ درون‌نوری و کارآمد از نظرِ پهنای‌باند از یک حسگرِ فیبری را ممکن می‌سازد.",
+        "method_en": "Experimental MRR-network with engineered self-pulsing; direct optical-domain processing of slow fiber-sensor signals for event detection.",
+        "method_fa": "شبکه‌ی MRRِ تجربی با خودـتپشِ مهندسی‌شده؛ پردازشِ مستقیمِ حوزه‌نوریِ سیگنال‌های کُندِ حسگرِ فیبری برای آشکارسازیِ رویداد.",
+        "results_en": "Experimentally demonstrated that MRR-network self-pulsing overcomes the short-memory limit and detects events from slow optical-sensor signals in the optical domain.",
+        "results_fa": "به‌طورِ تجربی نشان داده شد که خودـتپشِ شبکه‌ی MRR محدودیتِ حافظه‌ی کوتاه را برطرف می‌کند و رویدادها را از سیگنال‌های کُندِ حسگرِ نوری در حوزه‌ی نوری آشکار می‌سازد.",
+        "limitations_en": "Preprint, proof-of-concept; task complexity, robustness, programmability and integration with real sensor deployments remain to be shown.",
+        "limitations_fa": "پیش‌چاپ و اثباتِ مفهوم؛ پیچیدگیِ وظیفه، پایداری، برنامه‌پذیری و یکپارچگی با استقرارهای واقعیِ حسگر باید نشان داده شوند.",
+        "applications_en": "Low-power edge processing of fiber-sensor data, always-on event/anomaly detection, neuromorphic photonic sensing front-ends.",
+        "applications_fa": "پردازشِ کم‌توانِ لبه برای داده‌ی حسگرِ فیبری، آشکارسازیِ رویداد/ناهنجاریِ همیشه‌روشن، پیشانه‌های حسگریِ فوتونیکِ نورومورفیک.",
+        "recommendation_en": "Yes for photonic-computing and sensor-readout researchers; an interesting in-optics processing direction.",
+        "recommendation_fa": "بله برای پژوهشگرانِ محاسباتِ فوتونیک و بازخوانیِ حسگر؛ جهتی جذاب در پردازشِ درون‌نوری.",
+        "rating_reason_en": "Creative, experimentally-backed idea addressing a real read-out bottleneck; early stage and preprint keep it at four.",
+        "rating_reason_fa": "ایده‌ای خلاقانه و پشتیبانی‌شده با تجربه که به یک گلوگاهِ واقعیِ بازخوانی می‌پردازد؛ مرحله‌ی اولیه و پیش‌چاپ آن را در چهار نگه می‌دارد.",
+    },
+    "arXiv:2607.02545v1": {
+        "research_area": "Fiber Bragg Grating (FBG)",
+        "published": "2026-07",
+        "rating": 3,
+        "title_fa": "همجوشیِ داده‌ی چندحسگرِ مبتنی بر ترنسفورمر از موجِ هدایت‌شده‌ی فراصوتی و کرنش‌سنجیِ FBG برای پایشِ سلامتِ سازه‌ی هوافضاییِ چندوظیفه‌ای",
+        "summary_en": "This work targets a practical SHM problem in aerospace composites: different sensing modalities (here piezoelectric ultrasonic guided waves and FBG-based strain) capture complementary but heterogeneous information, sampled at very different rates and intervals, which makes fusing them hard. The authors propose a Transformer-based data-fusion framework that ingests these mismatched multisensor streams and performs multiple SHM tasks jointly. FBG strain contributes the quasi-static/low-frequency structural picture while ultrasonic guided waves contribute high-frequency defect-interaction information; the Transformer's attention mechanism is used to align and combine them despite their disparate sampling. The contribution is methodological — a fusion architecture rather than a new sensor — and its relevance to this monitor is the FBG strain-sensing modality and the broader 'AI over fiber-sensor data' trend. It is a reasonable, incremental engineering advance; the open questions are generalisation across structures, data requirements, and validation on real damage.",
+        "summary_fa": "این کار به یک مسئله‌ی عملیِ پایشِ سلامتِ سازه در کامپوزیت‌های هوافضا می‌پردازد: پیمانه‌های مختلفِ حسگری (اینجا موجِ هدایت‌شده‌ی فراصوتیِ پیزوالکتریک و کرنشِ مبتنی بر FBG) اطلاعاتِ مکمل اما ناهمگن را با نرخ‌ها و بازه‌های بسیار متفاوت ثبت می‌کنند که همجوشیِ آن‌ها را دشوار می‌سازد. نویسندگان یک چارچوبِ همجوشیِ داده‌ی مبتنی بر ترنسفورمر پیشنهاد می‌دهند که این جریان‌های ناهم‌خوانِ چندحسگر را دریافت و چند وظیفه‌ی SHM را هم‌زمان انجام می‌دهد. کرنشِ FBG تصویرِ شبه‌ایستا/فرکانس‌پایینِ سازه را و موجِ هدایت‌شده‌ی فراصوتی اطلاعاتِ برهم‌کنشِ عیبِ فرکانس‌بالا را فراهم می‌کند؛ سازوکارِ توجهِ ترنسفورمر برای هم‌ترازسازی و ترکیبِ آن‌ها به‌رغمِ نمونه‌برداریِ متفاوت به‌کار می‌رود. مشارکت روش‌شناختی است — یک معماریِ همجوشی، نه حسگرِ جدید — و ارتباطش با این پایش، پیمانه‌ی کرنش‌سنجیِ FBG و روندِ کلیِ «هوشِ مصنوعی روی داده‌ی حسگرِ فیبری» است. پیشرفتی مهندسی و افزایشی و معقول است؛ پرسش‌های باز، تعمیم میان سازه‌ها، نیازمندیِ داده و اعتبارسنجی روی آسیبِ واقعی‌اند.",
+        "problem_en": "Fusing heterogeneous SHM sensors (FBG strain + ultrasonic guided waves) that sample at very different rates for reliable multitask monitoring of aerospace composites.",
+        "problem_fa": "همجوشیِ حسگرهای ناهمگنِ SHM (کرنشِ FBG + موجِ هدایت‌شده‌ی فراصوتی) که با نرخ‌های بسیار متفاوت نمونه‌برداری می‌کنند، برای پایشِ چندوظیفه‌ایِ مطمئنِ کامپوزیت‌های هوافضا.",
+        "innovation_en": "A Transformer attention-based fusion framework that aligns and combines disparately-sampled FBG and ultrasonic streams for joint multitask SHM.",
+        "innovation_fa": "چارچوبِ همجوشیِ مبتنی بر توجهِ ترنسفورمر که جریان‌های با نمونه‌برداریِ متفاوتِ FBG و فراصوتی را برای SHMِ چندوظیفه‌ایِ مشترک هم‌تراز و ترکیب می‌کند.",
+        "method_en": "Transformer data-fusion of piezoelectric ultrasonic guided-wave signals and FBG strain measurements; multitask learning for damage-related SHM outputs.",
+        "method_fa": "همجوشیِ داده‌ی ترنسفورمر از سیگنال‌های موجِ هدایت‌شده‌ی فراصوتیِ پیزوالکتریک و کرنشِ FBG؛ یادگیریِ چندوظیفه‌ای برای خروجی‌های SHMِ مرتبط با آسیب.",
+        "results_en": "Showed that attention-based fusion handles heterogeneous sampling and improves multitask SHM over single-modality baselines.",
+        "results_fa": "نشان داد که همجوشیِ مبتنی بر توجه با نمونه‌برداریِ ناهمگن کنار می‌آید و SHMِ چندوظیفه‌ای را نسبت به پایه‌های تک‌پیمانه بهبود می‌دهد.",
+        "limitations_en": "Preprint; performance depends on training data; generalisation across structures/defect types and validation on real in-service damage are open.",
+        "limitations_fa": "پیش‌چاپ؛ کارایی به داده‌ی آموزش وابسته است؛ تعمیم میان سازه‌ها/انواعِ عیب و اعتبارسنجی روی آسیبِ واقعیِ حینِ سرویس باز است.",
+        "applications_en": "Aerospace composite SHM, multimodal condition monitoring, damage localisation and classification.",
+        "applications_fa": "پایشِ سلامتِ کامپوزیتِ هوافضا، پایشِ وضعیتِ چندپیمانه‌ای، مکان‌یابی و دسته‌بندیِ آسیب.",
+        "recommendation_en": "Optional — useful if you do multimodal SHM data fusion; skim otherwise as an incremental ML result that uses FBG as one input.",
+        "recommendation_fa": "اختیاری — اگر همجوشیِ داده‌ی SHMِ چندپیمانه‌ای انجام می‌دهید مفید است؛ در غیرِ این صورت به‌عنوانِ نتیجه‌ای افزایشی که FBG را یک ورودی می‌گیرد مرور کنید.",
+        "rating_reason_en": "Sensible engineering fusion but incremental and ML-centric; FBG is only one modality and it remains an unvalidated preprint.",
+        "rating_reason_fa": "همجوشیِ مهندسیِ معقول اما افزایشی و ML-محور؛ FBG تنها یک پیمانه است و همچنان پیش‌چاپِ اعتبارسنجی‌نشده است.",
+    },
+    "arXiv:2606.18628v1": {
+        "research_area": "Fiber Bragg Grating (FBG)",
+        "published": "2026-06",
+        "rating": 4,
+        "title_fa": "ترنسفورمرهای خودـنظارتیِ آگاه‌به‌ماسک برای حسگریِ نیرویِ FBGِ خطاـتحمل در رباتیکِ جراحیِ کم‌تهاجمی",
+        "summary_en": "Catheter-scale FBG sensors can estimate multi-dimensional forces by multiplexing several optical channels, which is very attractive for minimally invasive surgical robotics — but two problems degrade them in practice: nonlinear cross-axis coupling during complex deformations, and intermittent channel dropouts when fibers fracture in tight workspaces. Classic fault-tolerant fixes rely on combinatorial 'model banks' that grow exponentially with channel count and need expensive per-pattern calibration. This paper proposes a self-supervised, mask-aware Transformer that learns to estimate force while explicitly handling missing/dropped channels via masking — so a single model tolerates arbitrary channel-loss patterns without an exponential bank of calibrated models. The self-supervision reduces the labeled-calibration burden. The contribution is a scalable, fault-tolerant force-estimation method well matched to real surgical constraints, and it is a strong, application-driven use of FBG multiplexed sensing plus modern ML. Remaining questions are clinical validation, latency and safety certification.",
+        "summary_fa": "حسگرهای FBGِ در مقیاسِ کاتتر می‌توانند با چندگانه‌سازیِ چند کانالِ نوری نیروهای چندبُعدی را برآورد کنند که برای رباتیکِ جراحیِ کم‌تهاجمی بسیار جذاب است — اما دو مشکل در عمل آن‌ها را تضعیف می‌کند: جفت‌شدگیِ ناخطیِ میان‌محوری هنگامِ تغییرشکل‌های پیچیده، و افتِ متناوبِ کانال وقتی فیبرها در فضاهای تنگ می‌شکنند. راه‌حل‌های کلاسیکِ خطاـتحمل به «بانک‌های مدلِ» ترکیبیاتی متکی‌اند که با تعدادِ کانال به‌صورتِ نمایی رشد می‌کنند و به کالیبراسیونِ گران به‌ازای هر الگو نیاز دارند. این مقاله یک ترنسفورمرِ خودـنظارتی و آگاه‌به‌ماسک پیشنهاد می‌دهد که برآوردِ نیرو را می‌آموزد و هم‌زمان کانال‌های ازدست‌رفته/افتاده را از طریقِ ماسک‌گذاری صریحاً مدیریت می‌کند — پس یک مدلِ واحد الگوهای دلخواهِ افتِ کانال را بدونِ بانکِ نماییِ مدل‌های کالیبره تحمل می‌کند. خودـنظارتی بارِ کالیبراسیونِ برچسب‌دار را کاهش می‌دهد. مشارکت، روشی مقیاس‌پذیر و خطاـتحمل برای برآوردِ نیرو، هم‌خوان با محدودیت‌های واقعیِ جراحی است و کاربردی قوی از حسگریِ چندگانه‌ی FBG به‌همراهِ یادگیریِ ماشینِ مدرن است. پرسش‌های باقی‌مانده اعتبارسنجیِ بالینی، تأخیر و صدورِ گواهیِ ایمنی‌اند.",
+        "problem_en": "FBG force sensing in surgical robots suffers nonlinear cross-axis coupling and channel dropouts; classic fault tolerance scales exponentially and is costly to calibrate.",
+        "problem_fa": "حسگریِ نیرویِ FBG در ربات‌های جراحی از جفت‌شدگیِ ناخطیِ میان‌محوری و افتِ کانال رنج می‌برد؛ خطاـتحملِ کلاسیک به‌صورتِ نمایی رشد می‌کند و کالیبراسیونش گران است.",
+        "innovation_en": "A single self-supervised, mask-aware Transformer that tolerates arbitrary channel-loss patterns and cross-axis coupling without an exponential bank of calibrated models.",
+        "innovation_fa": "یک ترنسفورمرِ واحدِ خودـنظارتی و آگاه‌به‌ماسک که الگوهای دلخواهِ افتِ کانال و جفت‌شدگیِ میان‌محوری را بدونِ بانکِ نماییِ مدل‌های کالیبره تحمل می‌کند.",
+        "method_en": "Self-supervised training with channel masking to learn fault-tolerant multi-axis force estimation from multiplexed FBG channels.",
+        "method_fa": "آموزشِ خودـنظارتی با ماسک‌گذاریِ کانال برای یادگیریِ برآوردِ نیرویِ چندمحوریِ خطاـتحمل از کانال‌های چندگانه‌ی FBG.",
+        "results_en": "Robust multi-axis force estimation under cross-axis coupling and intermittent channel dropouts from a single scalable model, avoiding combinatorial calibration.",
+        "results_fa": "برآوردِ نیرویِ چندمحوریِ مقاوم تحتِ جفت‌شدگیِ میان‌محوری و افتِ متناوبِ کانال از یک مدلِ واحدِ مقیاس‌پذیر، با اجتنابِ از کالیبراسیونِ ترکیبیاتی.",
+        "limitations_en": "Preprint; clinical/in-vivo validation, real-time latency and regulatory safety for surgical use remain to be demonstrated.",
+        "limitations_fa": "پیش‌چاپ؛ اعتبارسنجیِ بالینی/درون‌تنی، تأخیرِ بلادرنگ و ایمنیِ مقرراتی برای کاربردِ جراحی باید نشان داده شوند.",
+        "applications_en": "Force-sensing surgical catheters/robots, minimally invasive interventions, haptic feedback, fault-tolerant multiplexed FBG systems.",
+        "applications_fa": "کاتترها/ربات‌های جراحیِ نیروسنج، مداخلاتِ کم‌تهاجمی، بازخوردِ لمسی، سامانه‌های چندگانه‌ی FBGِ خطاـتحمل.",
+        "recommendation_en": "Yes for FBG-sensing and medical-robotics researchers; a practical, well-motivated fault-tolerance advance.",
+        "recommendation_fa": "بله برای پژوهشگرانِ حسگریِ FBG و رباتیکِ پزشکی؛ پیشرفتی عملی و خوش‌انگیزه در خطاـتحمل.",
+        "rating_reason_en": "Addresses a genuine deployment pain-point with a scalable single-model solution; short of five due to preprint status and pending clinical validation.",
+        "rating_reason_fa": "به یک دردِ واقعیِ استقرار با راه‌حلِ مقیاس‌پذیرِ تک‌مدل می‌پردازد؛ به‌دلیلِ وضعیتِ پیش‌چاپ و نبودِ اعتبارسنجیِ بالینی کمتر از پنج.",
+    },
+    "arXiv:2607.09380v1": {
+        "research_area": "Distributed Acoustic Sensing (DAS)",
+        "published": "2026-07",
+        "rating": 3,
+        "title_fa": "معادله‌ی موجِ کشسانِ شتاب و نرخ‌کرنش و حلِ تفاضلِ‌محدودِ آن برای شبیه‌سازی‌های لرزه‌ایِ حسگریِ آکوستیکِ توزیع‌شده",
+        "summary_en": "DAS records ground motion as strain (or strain-rate) along the fiber axis, which is fundamentally different from the particle-velocity/displacement that conventional seismometers measure — so standard seismic forward-modeling equations do not directly produce DAS-native synthetics. This paper derives a wave-equation formulation cast in terms of acceleration and strain-rate and provides its finite-difference solution, so simulations output the strain-rate quantity DAS actually senses without lossy post-hoc conversions. Accurate DAS-native synthetics matter for survey design, imaging and full-waveform inversion, where converting between measurement types introduces numerical noise and spectral distortion. The contribution is a careful numerical-methods advance for the DAS modeling toolchain rather than a sensing result. It is useful infrastructure for the computational-seismology side of DAS; its impact depends on adoption and benchmarking against established solvers.",
+        "summary_fa": "DAS حرکتِ زمین را به‌صورتِ کرنش (یا نرخ‌کرنش) در امتدادِ محورِ فیبر ثبت می‌کند که بنیادین با سرعت/جابه‌جاییِ ذره‌ای که لرزه‌نگارهای مرسوم اندازه می‌گیرند متفاوت است — پس معادلاتِ استانداردِ مدل‌سازیِ پیشروِ لرزه‌ای مستقیماً سنتتیکِ بومیِ DAS تولید نمی‌کنند. این مقاله یک صورت‌بندیِ معادله‌ی موج برحسبِ شتاب و نرخ‌کرنش استخراج و حلِ تفاضلِ‌محدودِ آن را ارائه می‌کند، تا شبیه‌سازی‌ها همان کمیتِ نرخ‌کرنشی را که DAS واقعاً حس می‌کند بدونِ تبدیل‌های پس‌رخدادیِ پرافت خروجی دهند. سنتتیکِ دقیقِ بومیِ DAS برای طراحیِ برداشت، تصویربرداری و وارون‌سازیِ کاملِ موج مهم است، جایی که تبدیل میانِ انواعِ اندازه‌گیری نوفه‌ی عددی و اعوجاجِ طیفی وارد می‌کند. مشارکت، پیشرفتی دقیق در روش‌های عددی برای زنجیره‌ابزارِ مدل‌سازیِ DAS است، نه یک نتیجه‌ی حسگری. زیرساختی مفید برای سمتِ لرزه‌شناسیِ محاسباتیِ DAS است؛ اثرش به پذیرش و محک‌زنی در برابرِ حل‌گرهای مستقر بستگی دارد.",
+        "problem_en": "Standard seismic modeling outputs particle velocity/displacement, not the strain-rate DAS senses; converting between them injects numerical noise and spectral distortion.",
+        "problem_fa": "مدل‌سازیِ استانداردِ لرزه‌ای سرعت/جابه‌جاییِ ذره‌ای خروجی می‌دهد، نه نرخ‌کرنشی که DAS حس می‌کند؛ تبدیل میانِ آن‌ها نوفه‌ی عددی و اعوجاجِ طیفی وارد می‌کند.",
+        "innovation_en": "An acceleration/strain-rate wave-equation formulation with a finite-difference solution that directly produces DAS-native strain-rate synthetics.",
+        "innovation_fa": "صورت‌بندیِ معادله‌ی موجِ شتاب/نرخ‌کرنش با حلِ تفاضلِ‌محدود که مستقیماً سنتتیکِ نرخ‌کرنشِ بومیِ DAS تولید می‌کند.",
+        "method_en": "Derive the acceleration/strain-rate elastic wave equation; implement and verify a finite-difference solver for DAS seismic simulation.",
+        "method_fa": "استخراجِ معادله‌ی موجِ کشسانِ شتاب/نرخ‌کرنش؛ پیاده‌سازی و راستی‌آزماییِ حل‌گرِ تفاضلِ‌محدود برای شبیه‌سازیِ لرزه‌ایِ DAS.",
+        "results_en": "A working finite-difference scheme that outputs DAS-consistent strain-rate wavefields, avoiding conversion artifacts in the modeling stage.",
+        "results_fa": "یک طرحِ تفاضلِ‌محدودِ کارکردی که میدان‌های موجِ نرخ‌کرنشِ سازگار با DAS خروجی می‌دهد و آرتیفکت‌های تبدیل را در مرحله‌ی مدل‌سازی حذف می‌کند.",
+        "limitations_en": "Preprint; a modeling/numerical-methods contribution, not a measurement; broad validation and adoption vs. established solvers pending.",
+        "limitations_fa": "پیش‌چاپ؛ مشارکتی در مدل‌سازی/روش‌های عددی است، نه اندازه‌گیری؛ اعتبارسنجیِ گسترده و پذیرش در برابرِ حل‌گرهای مستقر در انتظار است.",
+        "applications_en": "DAS survey design, seismic imaging, full-waveform inversion, computational seismology tooling.",
+        "applications_fa": "طراحیِ برداشتِ DAS، تصویربرداریِ لرزه‌ای، وارون‌سازیِ کاملِ موج، ابزارِ لرزه‌شناسیِ محاسباتی.",
+        "recommendation_en": "Optional — valuable if you build DAS forward modeling/FWI tooling; otherwise a specialised numerical result.",
+        "recommendation_fa": "اختیاری — اگر ابزارِ مدل‌سازیِ پیشرو/FWIِ DAS می‌سازید ارزشمند است؛ در غیرِ این صورت نتیجه‌ای عددیِ تخصصی.",
+        "rating_reason_en": "Useful, correct modeling infrastructure but narrow and computational rather than a sensing advance; preprint.",
+        "rating_reason_fa": "زیرساختِ مدل‌سازیِ مفید و درست اما تخصصی و محاسباتی، نه پیشرفتی در حسگری؛ پیش‌چاپ.",
+    },
+    "arXiv:2607.01649v1": {
+        "research_area": "Distributed Acoustic Sensing (DAS)",
+        "published": "2026-07",
+        "rating": 3,
+        "title_fa": "وارون‌سازیِ کاملِ موجِ کشسانِ مشترکِ داده‌ی ژئوفونِ چندمؤلفه‌ای و حسگریِ آکوستیکِ توزیع‌شده",
+        "summary_en": "Joint full-waveform inversion (FWI) that combines DAS with ocean-bottom-node (OBN) or geophone data usually forces a conversion of DAS strain into particle velocity, which introduces numerical noise and spectral distortion. This paper avoids that by formulating an elastic multi-parameter FWI on a velocity–stress–strain (VSS) system that models pressure, particle velocity and gauge-length-averaged DAS strain together from a single forward simulation — so each data type is honored in its native form. Cleverly, data residuals are injected additively into one backward simulation, making computational cost independent of which sensor subsets are active. The authors benchmark individual and combined datasets on cross-talk and elastic Marmousi models. The contribution is an efficient, physically consistent framework for genuinely multi-sensor elastic imaging, relevant to this monitor as advanced processing of DAS data. It is a solid computational-geophysics advance; broader field validation is the next step.",
+        "summary_fa": "وارون‌سازیِ کاملِ موجِ (FWI) مشترک که DAS را با داده‌ی گرهِ بستر اقیانوس (OBN) یا ژئوفون ترکیب می‌کند معمولاً تبدیلِ کرنشِ DAS به سرعتِ ذره‌ای را تحمیل می‌کند که نوفه‌ی عددی و اعوجاجِ طیفی وارد می‌سازد. این مقاله با صورت‌بندیِ یک FWIِ کشسانِ چندپارامتری روی دستگاهِ سرعت–تنش–کرنش (VSS) از این کار پرهیز می‌کند؛ دستگاهی که فشار، سرعتِ ذره‌ای و کرنشِ میانگین‌گیری‌شده روی طولِ گیجِ DAS را با هم از یک شبیه‌سازیِ پیشروِ واحد مدل می‌کند — پس هر نوعِ داده در شکلِ بومیِ خود لحاظ می‌شود. به‌طرزِ هوشمندانه، مانده‌های داده به‌صورتِ جمعی به یک شبیه‌سازیِ پس‌رو تزریق می‌شوند و هزینه‌ی محاسباتی را مستقل از این‌که کدام زیرمجموعه‌ی حسگرها فعال است می‌سازند. نویسندگان مجموعه‌داده‌های منفرد و ترکیبی را روی مدل‌های هم‌شنوایی و مارموسیِ کشسان محک می‌زنند. مشارکت، چارچوبی کارآمد و از نظرِ فیزیکی سازگار برای تصویربرداریِ کشسانِ به‌راستی چندحسگری است.",
+        "problem_en": "Joint DAS+geophone/OBN FWI normally converts DAS strain to velocity, adding numerical noise and spectral distortion and complicating multi-sensor inversion.",
+        "problem_fa": "FWIِ مشترکِ DAS+ژئوفون/OBN معمولاً کرنشِ DAS را به سرعت تبدیل می‌کند و نوفه‌ی عددی و اعوجاجِ طیفی می‌افزاید و وارون‌سازیِ چندحسگری را پیچیده می‌کند.",
+        "innovation_en": "A velocity–stress–strain elastic FWI that natively models pressure, particle velocity and gauge-length DAS strain in one forward run, with additive residual injection for sensor-subset-independent cost.",
+        "innovation_fa": "یک FWIِ کشسانِ سرعت–تنش–کرنش که فشار، سرعتِ ذره‌ای و کرنشِ طولِ‌گیجِ DAS را به‌صورتِ بومی در یک اجرای پیشروِ واحد مدل می‌کند، با تزریقِ جمعیِ مانده برای هزینه‌ی مستقل از زیرمجموعه‌ی حسگر.",
+        "method_en": "VSS-formulation elastic multi-parameter FWI; single forward + single additive-residual backward simulation; benchmarked on cross-talk and elastic Marmousi models.",
+        "method_fa": "FWIِ کشسانِ چندپارامتری با صورت‌بندیِ VSS؛ یک پیشرو + یک پس‌روِ تزریقِ‌جمعیِ مانده؛ محک‌زده روی مدل‌های هم‌شنوایی و مارموسیِ کشسان.",
+        "results_en": "Consistent joint inversion of DAS and geophone/OBN data without strain-to-velocity conversion, at a cost independent of the active sensor subset, validated on benchmark models.",
+        "results_fa": "وارون‌سازیِ مشترکِ سازگارِ داده‌ی DAS و ژئوفون/OBN بدونِ تبدیلِ کرنش‌به‌سرعت، با هزینه‌ی مستقل از زیرمجموعه‌ی فعالِ حسگر، اعتبارسنجی‌شده روی مدل‌های محک.",
+        "limitations_en": "Preprint; validated on synthetic benchmark models; real-field multi-sensor validation and 3D/scale performance remain to be shown.",
+        "limitations_fa": "پیش‌چاپ؛ روی مدل‌های محکِ مصنوعی اعتبارسنجی شده؛ اعتبارسنجیِ چندحسگریِ میدانیِ واقعی و کاراییِ سه‌بُعدی/مقیاس باید نشان داده شود.",
+        "applications_en": "Multi-sensor seismic imaging, reservoir/monitoring surveys combining DAS and nodes, computational geophysics.",
+        "applications_fa": "تصویربرداریِ لرزه‌ایِ چندحسگری، برداشت‌های مخزن/پایش با ترکیبِ DAS و گره‌ها، ژئوفیزیکِ محاسباتی.",
+        "recommendation_en": "Optional — valuable for DAS/FWI geophysicists; a specialised but well-constructed inversion framework.",
+        "recommendation_fa": "اختیاری — برای ژئوفیزیک‌دانانِ DAS/FWI ارزشمند است؛ چارچوبِ وارون‌سازیِ تخصصی اما خوش‌ساخت.",
+        "rating_reason_en": "Elegant, efficient native-DAS inversion but synthetic-only and specialised; a preprint processing-method contribution.",
+        "rating_reason_fa": "وارون‌سازیِ بومیِ‌DASِ ظریف و کارآمد اما فقط‌مصنوعی و تخصصی؛ مشارکتی پیش‌چاپ در روشِ پردازش.",
+    },
+}
+
+
+def main() -> None:
+    papers = load_papers()
+    papers = [p for p in papers if p.get("id") not in DROP]
+
+    patched = 0
+    for p in papers:
+        extra = PATCH.get(p.get("id"))
+        if not extra:
+            continue
+        p.update(extra)
+        p["notes"] = "Preprint. Analyst-completed bilingual analysis (grounded in the arXiv abstract)."
+        patched += 1
+
+    save_papers(papers)
+    print(f"Dropped {len(DROP)} off-topic; patched {patched} records; {len(papers)} total.")
+
+
+if __name__ == "__main__":
+    main()
