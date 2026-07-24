@@ -11,6 +11,10 @@ const copy = {
     title: "Fiber Bragg Grating Sensor Simulator",
     subtitle:
       "An interactive, physics-based model of an FBG optical sensor. Adjust temperature and strain and watch the reflected Bragg peak shift in real time — the same forward model my calibration and denoising work is built on.",
+    labEyebrow: "Private Lab",
+    labTitle: "Fiber-Optic Current Sensor Simulator",
+    labBody: "An advanced multi-phase simulation of a fiber-optic current sensor (Faraday effect). Password-protected — enter the access code you were given.",
+    labButton: "Open private simulator",
     ctaTitle: "Want a custom simulator or sensor model like this?",
     ctaSubtitle: "This kind of interactive tool can be built around your own sensor, experiment, or dataset.",
     ctaButton: "Request a Quote",
@@ -25,6 +29,10 @@ const copy = {
     title: "شبیه‌ساز حسگر توری براگ فیبری",
     subtitle:
       "یک مدل تعاملی و مبتنی بر فیزیک از حسگر نوری FBG. دما و کرنش را تغییر دهید و جابه‌جایی زنده‌ی قله‌ی براگ را ببینید — همان مدل مستقیمی که کار کالیبراسیون و حذف نویز من روی آن ساخته شده است.",
+    labEyebrow: "آزمایشگاه خصوصی",
+    labTitle: "شبیه‌ساز حسگر جریان فیبر نوری",
+    labBody: "یک شبیه‌سازی پیشرفته و چندفازی از حسگر جریان فیبر نوری (اثر فارادی). محافظت‌شده با رمز — کد دسترسی‌ای را که به شما داده شده وارد کنید.",
+    labButton: "باز کردن شبیه‌ساز خصوصی",
     ctaTitle: "شبیه‌ساز یا مدل حسگر اختصاصی مثل این می‌خواهید؟",
     ctaSubtitle: "این نوع ابزار تعاملی می‌تواند حول حسگر، آزمایش یا مجموعه‌داده‌ی خودتان ساخته شود.",
     ctaButton: "درخواست قیمت",
@@ -63,6 +71,26 @@ export function SimulatorBody({ locale }: { locale: Locale }) {
             {c.aboutBody.map((p, i) => (
               <p key={i} className="text-sm leading-relaxed text-slate-400 sm:text-base">{p}</p>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-20">
+        <div className="container-page max-w-4xl">
+          <div className="glass-card flex flex-col items-start gap-4 p-7 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-firoozeh-500/15 text-xl text-firoozeh-400">
+                🔒
+              </span>
+              <div>
+                <p className="eyebrow !text-[11px]">{c.labEyebrow}</p>
+                <h3 className="mt-1 font-heading text-lg font-semibold text-white">{c.labTitle}</h3>
+                <p className="mt-1 max-w-xl text-sm text-slate-400">{c.labBody}</p>
+              </div>
+            </div>
+            <Link href={localeHref(locale, "/lab")} className="btn-secondary shrink-0 whitespace-nowrap">
+              {c.labButton}
+            </Link>
           </div>
         </div>
       </section>
