@@ -1,0 +1,17 @@
+# Optical Fiber Sensors — Daily Research Monitor
+# Python 3.12 recommended (works on 3.11+).
+#
+# Core (required):
+requests>=2.31
+
+# Recommended (graceful fallbacks exist if missing):
+pandas>=2.0            # clean CSV export (falls back to stdlib csv)
+feedparser>=6.0        # convenience arXiv Atom parsing (stdlib xml fallback used)
+matplotlib>=3.8        # optional PNG figures (SVG always generated)
+
+# Optional integrations:
+beautifulsoup4>=4.12   # HTML scraping helpers for future source adapters
+scholarly>=1.7         # Google Scholar enrichment (citations)
+anthropic>=0.40        # LLM-driven bilingual analysis (set ANTHROPIC_API_KEY)
+PyGithub>=2.3          # programmatic GitHub updates (CI uses git directly)
+GitPython>=3.1         # local commit/push helper

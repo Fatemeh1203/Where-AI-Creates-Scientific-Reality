@@ -83,3 +83,34 @@ Set all the environment variables from `.env.example` in your hosting provider's
 - Fill in real portfolio case studies, publications, and a real photo if you'd like (currently a placeholder monogram is used on the About page).
 - Add a real `ads.txt` file at the project root once AdSense gives you your publisher ID.
 - Review `/privacy` and `/terms` and adjust to your actual business details/jurisdiction.
+
+<!-- FIBER-MONITOR:START -->
+
+## 🔬 Optical Fiber Sensors — Daily Research Monitor
+
+An automated pipeline that every day discovers, vets, analyses (bilingual EN/FA)
+and logs the newest peer-reviewed and preprint literature on optical fiber
+sensing. See [`docs/RESEARCH_MONITOR.md`](docs/RESEARCH_MONITOR.md) for the design.
+
+| Metric | Value |
+|---|---|
+| 🕒 Last update | **2026-07-23** |
+| 📚 Total papers tracked | **6** |
+| 🗓️ Papers this week | **6** |
+| 📰 Distinct journals/venues | **1** |
+
+**🔥 Hot topics**
+
+| Research area | Papers |
+|---|---|
+| Distributed Acoustic Sensing (DAS) | 2 |
+| Fiber Bragg Grating (FBG) | 1 |
+| Distributed Fiber Optic Sensing (DFOS) | 1 |
+| Quantum Fiber Sensors | 1 |
+| Interferometric Fiber Sensors | 1 |
+
+📈 Chart: [`Figures/papers_by_area.svg`](Figures/papers_by_area.svg) ·
+🗂️ Database: [`Database/papers.csv`](Database/papers.csv) ·
+📄 Latest report: [`Reports/2026-07-23.md`](Reports/2026-07-23.md)
+
+<!-- FIBER-MONITOR:END -->

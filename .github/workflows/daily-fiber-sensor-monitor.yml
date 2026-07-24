@@ -1,0 +1,63 @@
+name: Daily Optical Fiber Sensor Monitor
+
+# Discovers, analyses (bilingual EN/FA) and logs the newest optical-fiber-sensor
+# literature every day, then commits the updated database, report and figures.
+
+on:
+  schedule:
+    # 06:30 UTC daily. GitHub cron is UTC.
+    - cron: "30 6 * * *"
+  workflow_dispatch: {}   # allow manual runs
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fiber-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r Scripts/requirements.txt
+
+      - name: Run daily monitor
+        env:
+          # Optional: enables automated bilingual analysis via the Claude API.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL || 'claude-opus-4-8' }}
+        run: |
+          python Scripts/run_daily.py || echo "run_daily reported a non-fatal error; continuing"
+
+      - name: Commit and push changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          DAY=$(date -u +%Y-%m-%d)
+          git add papers.json Database Reports Analysis Figures README.md || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "research(monitor): daily optical fiber sensor update (${DAY})"
+          # Retry push with exponential backoff on transient network failures.
+          n=0
+          until [ $n -ge 4 ]; do
+            git push && break
+            n=$((n+1))
+            echo "push failed, retry $n"; sleep $((2 ** n))
+          done
