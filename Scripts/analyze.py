@@ -92,13 +92,36 @@ def analyze(record: dict) -> dict:
 
 
 def _analyze_template(record: dict) -> dict:
+    """Offline fallback (no paid API): produce a genuine, readable record from the
+    real abstract instead of empty placeholders.
+
+    The English summary is the paper's actual abstract; the remaining fields carry
+    a short, honest note that a fuller analysis is pending. This keeps the daily
+    report useful and never shows broken "[To be completed]" text.
+    """
     abstract = record.get("abstract", "").strip()
-    todo_en = "[To be completed by analyst]"
-    todo_fa = "[برای تکمیل توسط تحلیل‌گر]"
-    for f in ANALYSIS_FIELDS:
-        record.setdefault(f, todo_fa if f.endswith("_fa") else todo_en)
-    if abstract and record.get("summary_en") == todo_en:
-        record["summary_en"] = abstract
+    title = record.get("title_en", "").strip()
+
+    note_en = "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs."
+    note_fa = "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود."
+
+    defaults = {
+        "summary_en": abstract or note_en,
+        "summary_fa": note_fa,
+        "problem_en": note_en, "problem_fa": note_fa,
+        "innovation_en": note_en, "innovation_fa": note_fa,
+        "method_en": note_en, "method_fa": note_fa,
+        "results_en": note_en, "results_fa": note_fa,
+        "limitations_en": note_en, "limitations_fa": note_fa,
+        "applications_en": note_en, "applications_fa": note_fa,
+        "recommendation_en": note_en, "recommendation_fa": note_fa,
+        "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+        "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+    }
+    if not record.get("title_fa"):
+        record["title_fa"] = title  # keep the English title until translated
+    for f, v in defaults.items():
+        record.setdefault(f, v)
     return record
 
 

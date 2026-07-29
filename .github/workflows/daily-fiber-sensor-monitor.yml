@@ -4,15 +4,14 @@ name: Daily Optical Fiber Sensor Monitor
 # literature every day, then commits the updated database, report and figures.
 
 on:
-  # NOTE: the daily schedule is intentionally disabled. The daily run is driven
-  # by a free Claude routine (no paid API needed) that fetches, analyses
-  # (bilingual EN/FA) and commits — so this workflow no longer runs on a cron to
-  # avoid committing un-analysed placeholder papers. It remains available for
-  # manual runs, and the analysis step here only works if ANTHROPIC_API_KEY is
-  # funded. To re-enable automatic runs, uncomment the schedule block below.
-  # schedule:
-  #   - cron: "30 6 * * *"   # 06:30 UTC daily
-  workflow_dispatch: {}   # manual runs only
+  # Reliable, free daily engine: runs on GitHub's own infrastructure and pushes
+  # via the built-in token (no external environment / credentials needed). The
+  # offline analyzer produces a real English summary from each abstract plus full
+  # metadata — never broken placeholders. If ANTHROPIC_API_KEY is funded, the
+  # analysis is upgraded to full bilingual EN/FA automatically.
+  schedule:
+    - cron: "30 6 * * *"   # 06:30 UTC daily (~10:00 Tehran)
+  workflow_dispatch: {}   # also allow manual runs
 
 permissions:
   contents: write
