@@ -2,7 +2,7 @@
   "mcpServers": {
     "n8n-mcp": {
       "type": "http",
-      "url": "${N8N_MCP_URL:-https://your-n8n-domain/mcp-server/http}",
+      "url": "${N8N_MCP_URL:-https://arezoo000.app.n8n.cloud/mcp-server/http}",
       "headers": {
         "Authorization": "Bearer ${N8N_MCP_AUTH_TOKEN}"
       }

@@ -40,7 +40,7 @@ starts, so the real domain and token stay out of version control.
 2. **Set the environment variables** (see [`.env.example`](../.env.example)):
 
    ```bash
-   export N8N_MCP_URL="https://n8n.example.com/mcp-server/http"
+   export N8N_MCP_URL="https://arezoo000.app.n8n.cloud/mcp-server/http"
    export N8N_MCP_AUTH_TOKEN="your-token"   # omit if the endpoint is public
    ```
 
