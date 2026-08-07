@@ -115,3 +115,16 @@ sensing. See [`docs/RESEARCH_MONITOR.md`](docs/RESEARCH_MONITOR.md) for the desi
 📄 Latest report: [`Reports/2026-08-07.md`](Reports/2026-08-07.md)
 
 <!-- FIBER-MONITOR:END -->
+
+---
+
+## 🌐 Automation demos / دموی اتوماسیون‌ها
+
+**English** — Interactive demos of my n8n automation workflows, running live in the browser:
+👉 **https://fatemeh1203.github.io/n8n-special-Arezou-/**
+
+**فارسی** — دموی تعاملی گردش‌کارهای n8n که ساخته‌ام؛ هر اتوماسیون را می‌توانید همان‌جا در مرورگر اجرا کنید:
+👉 **https://fatemeh1203.github.io/n8n-special-Arezou-/**
+
+By **Fatemeh Shams** — از **فاطمه شمس** ·
+[LinkedIn](https://www.linkedin.com/in/fatemeh-shams/) · [fatemeh.shams19@gmail.com](mailto:fatemeh.shams19@gmail.com) · [GitHub](https://github.com/Fatemeh1203)
