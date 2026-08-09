@@ -94,9 +94,9 @@ sensing. See [`docs/RESEARCH_MONITOR.md`](docs/RESEARCH_MONITOR.md) for the desi
 
 | Metric | Value |
 |---|---|
-| 🕒 Last update | **2026-08-08** |
+| 🕒 Last update | **2026-08-09** |
 | 📚 Total papers tracked | **100** |
-| 🗓️ Papers this week | **48** |
+| 🗓️ Papers this week | **36** |
 | 📰 Distinct journals/venues | **1** |
 
 **🔥 Hot topics**
@@ -112,7 +112,7 @@ sensing. See [`docs/RESEARCH_MONITOR.md`](docs/RESEARCH_MONITOR.md) for the desi
 
 📈 Chart: [`Figures/papers_by_area.svg`](Figures/papers_by_area.svg) ·
 🗂️ Database: [`Database/papers.csv`](Database/papers.csv) ·
-📄 Latest report: [`Reports/2026-08-08.md`](Reports/2026-08-08.md)
+📄 Latest report: [`Reports/2026-08-09.md`](Reports/2026-08-09.md)
 
 <!-- FIBER-MONITOR:END -->
 
