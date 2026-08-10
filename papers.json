@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 100,
+  "count": 101,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -4608,6 +4608,52 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-08-07"
+    },
+    {
+      "id": "arXiv:2608.06864v1",
+      "title_en": "Comparative Analysis of Spread-Spectrum Codes for Fibre-Optic Distributed Acoustic Sensing",
+      "title_fa": "Comparative Analysis of Spread-Spectrum Codes for Fibre-Optic Distributed Acoustic Sensing",
+      "authors": "Maria Freire-Hermelo, Elie Awwad",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2608.06864",
+      "link": "http://arxiv.org/abs/2608.06864v1",
+      "scholar": "https://scholar.google.com/scholar?q=Comparative+Analysis+of+Spread-Spectrum+Codes+for+Fibre-Optic+Distributed+Acoustic+Sensing",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "eess.SP",
+        "physics.optics"
+      ],
+      "research_area": "Distributed Acoustic Sensing (DAS)",
+      "published": "2026-08-07",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "This paper presents a comprehensive performance comparison of several coded sequences for distributed acoustic sensing systems through numerical simulations. Correlation analysis reveals that perfect autocorrelation sequences provide accurate channel estimation. Phase noise sensitivity varies significantly with frequency diversity, with high-diversity sequences maintaining lower estimation errors for phase and intensity despite increased laser linewidths. For a coded distributed acoustic sensing system with \\qty{10}{\\hertz} laser linewidth, high-diversity sequences achieve $2.7\\times10^{-3}$ rad phase error compared to $5.3\\times10^{-3}$ rad for low-diversity codes for a \\qty{1.5}{\\kilo\\meter} fibre length. The findings establish performance trade-offs between correlation quality, phase noise resilience, and practical implementation constraints for next-generation fibre-optic distributed acoustic sensing systems.",
+      "rating": 3,
+      "summary_en": "This paper presents a comprehensive performance comparison of several coded sequences for distributed acoustic sensing systems through numerical simulations. Correlation analysis reveals that perfect autocorrelation sequences provide accurate channel estimation. Phase noise sensitivity varies significantly with frequency diversity, with high-diversity sequences maintaining lower estimation errors for phase and intensity despite increased laser linewidths. For a coded distributed acoustic sensing system with \\qty{10}{\\hertz} laser linewidth, high-diversity sequences achieve $2.7\\times10^{-3}$ rad phase error compared to $5.3\\times10^{-3}$ rad for low-diversity codes for a \\qty{1.5}{\\kilo\\meter} fibre length. The findings establish performance trade-offs between correlation quality, phase noise resilience, and practical implementation constraints for next-generation fibre-optic distributed acoustic sensing systems.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-08-10"
     }
   ]
 }
