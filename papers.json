@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 104,
+  "count": 105,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -4790,6 +4790,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-08-19"
+    },
+    {
+      "id": "arXiv:2608.18124v1",
+      "title_en": "TOBYQA: A Trust-Region Method for Derivative-Free Optimization on Time-Varying Functions",
+      "title_fa": "TOBYQA: A Trust-Region Method for Derivative-Free Optimization on Time-Varying Functions",
+      "authors": "Haoyu Yao, Pengcheng Xie",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2608.18124",
+      "link": "http://arxiv.org/abs/2608.18124v1",
+      "scholar": "https://scholar.google.com/scholar?q=TOBYQA%3A+A+Trust-Region+Method+for+Derivative-Free+Optimization+on+Time-Varying+Functions",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "math.OC"
+      ],
+      "research_area": "Distributed Fiber Optic Sensing (DFOS)",
+      "published": "2026-07-16",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Derivative-free optimization (DFO) becomes particularly difficult when function evaluations are affected by temporal drift and observation noise. Conventional trust-region methods generally assume a static landscape, which may lead to stale-data bias and misleading trust-region updates. We propose TOBYQA (Time-augmented Optimization BY Quadratic Approximation), a regularized DFO framework that jointly models spatial geometry and temporal variations within a unified quadratic interpolation system. Specifically, TOBYQA augments the classical KKT interpolation system with a ridge term on the $(1,1)$-block, which accommodates observation noise and ensures well-posedness under a mild full-column-rank condition on the constraint block, thereby relaxing the stringent geometric poisedness requirements of classical methods. To handle non-stationarity, we embed an explicit linear-in-time drift term into the interpolation model, enabling a drift-compensated ratio test that subtracts the estimated temporal component from the observed reduction. Additionally, a diagonal affine-scaling adapts the search geometry to local variation in curvature. Benchmark evaluations on the Moré--Wild 88-function suite across various temporal drifts and dimensions ($n \\in \\{6,10,20\\}$) demonstrate that TOBYQA exhibits enhanced robustness under drift, while maintaining competitive performance in static environments.",
+      "rating": 2,
+      "summary_en": "Derivative-free optimization (DFO) becomes particularly difficult when function evaluations are affected by temporal drift and observation noise. Conventional trust-region methods generally assume a static landscape, which may lead to stale-data bias and misleading trust-region updates. We propose TOBYQA (Time-augmented Optimization BY Quadratic Approximation), a regularized DFO framework that jointly models spatial geometry and temporal variations within a unified quadratic interpolation system. Specifically, TOBYQA augments the classical KKT interpolation system with a ridge term on the $(1,1)$-block, which accommodates observation noise and ensures well-posedness under a mild full-column-rank condition on the constraint block, thereby relaxing the stringent geometric poisedness requirements of classical methods. To handle non-stationarity, we embed an explicit linear-in-time drift term into the interpolation model, enabling a drift-compensated ratio test that subtracts the estimated temporal component from the observed reduction. Additionally, a diagonal affine-scaling adapts the search geometry to local variation in curvature. Benchmark evaluations on the Moré--Wild 88-function suite across various temporal drifts and dimensions ($n \\in \\{6,10,20\\}$) demonstrate that TOBYQA exhibits enhanced robustness under drift, while maintaining competitive performance in static environments.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-08-20"
     }
   ]
 }
