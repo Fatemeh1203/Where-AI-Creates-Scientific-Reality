@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 106,
+  "count": 107,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -4878,6 +4878,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-08-25"
+    },
+    {
+      "id": "arXiv:2608.24724v1",
+      "title_en": "Fiber Bragg Grating Whiskers for Bioinspired Hydrodynamic Perception on Underwater Robots",
+      "title_fa": "Fiber Bragg Grating Whiskers for Bioinspired Hydrodynamic Perception on Underwater Robots",
+      "authors": "Hao Li, Tianyu Tu, Siyue Yao, Ziyang Chang, Juhyun Jung, Xiaochi Xie, Long Yin Chung, Tian-Ao Ren, Genliang Chen, Mark Cutkosky",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2608.24724",
+      "link": "http://arxiv.org/abs/2608.24724v1",
+      "scholar": "https://scholar.google.com/scholar?q=Fiber+Bragg+Grating+Whiskers+for+Bioinspired+Hydrodynamic+Perception+on+Underwater+Robots",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "cs.RO"
+      ],
+      "research_area": "Fiber Bragg Grating (FBG)",
+      "published": "2026-08-25",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Harbor seals track hydrodynamic trails with their vibrissae, enabling passive perception of moving targets in dark or turbid water. Inspired by this capability, we present compact fiber Bragg grating (FBG) whiskers for underwater robots. Like seal whiskers, they have a non-uniform taper and elliptical cross-section. Controlled towing experiments show a monotonic relative-flow response from 0.1 to 0.6 m/s, a strong reduction of self-induced oscillation relative to a cylindrical baseline, and a pronounced dependence on angle of attack. Experiments with a pitching foil show that the whiskers can detect the characteristic vortices shed by a stationary or moving source, detectable several seconds after the source has passed. Using this information, a single front-mounted whisker enabled a small underwater robot to distinguish between continuing straight and executing a turn, selecting the correct branch in 17 of 20 trials (85.0%) from whisker signals alone. These results connect bioinspired hydrodynamic sensing to robot action and suggest the utility of whiskers for tracking underwater objects.",
+      "rating": 3,
+      "summary_en": "Harbor seals track hydrodynamic trails with their vibrissae, enabling passive perception of moving targets in dark or turbid water. Inspired by this capability, we present compact fiber Bragg grating (FBG) whiskers for underwater robots. Like seal whiskers, they have a non-uniform taper and elliptical cross-section. Controlled towing experiments show a monotonic relative-flow response from 0.1 to 0.6 m/s, a strong reduction of self-induced oscillation relative to a cylindrical baseline, and a pronounced dependence on angle of attack. Experiments with a pitching foil show that the whiskers can detect the characteristic vortices shed by a stationary or moving source, detectable several seconds after the source has passed. Using this information, a single front-mounted whisker enabled a small underwater robot to distinguish between continuing straight and executing a turn, selecting the correct branch in 17 of 20 trials (85.0%) from whisker signals alone. These results connect bioinspired hydrodynamic sensing to robot action and suggest the utility of whiskers for tracking underwater objects.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-08-26"
     }
   ]
 }
