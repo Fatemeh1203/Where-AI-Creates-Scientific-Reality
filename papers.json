@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 110,
+  "count": 111,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5059,6 +5059,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-09-09"
+    },
+    {
+      "id": "arXiv:2609.11567v1",
+      "title_en": "Non-monotone direct-search methods for deterministic and stochastic derivative-free optimization",
+      "title_fa": "Non-monotone direct-search methods for deterministic and stochastic derivative-free optimization",
+      "authors": "Anjie Ding, Trang H. Tran, Luis Nunes Vicente",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2609.11567",
+      "link": "http://arxiv.org/abs/2609.11567v1",
+      "scholar": "https://scholar.google.com/scholar?q=Non-monotone+direct-search+methods+for+deterministic+and+stochastic+derivative-free+optimization",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "math.OC"
+      ],
+      "research_area": "Distributed Fiber Optic Sensing (DFOS)",
+      "published": "2026-09-10",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "In derivative-free optimization (DFO), one minimizes functions for which the gradient is unavailable or expensive to compute. In many applications, objective function values and gradients are noisy due to simulations or system randomness. A class of standard direct-search methods for DFO accept a trial point when it decreases the objective function by an amount proportional to the squared stepsize. However, when applied to complex landscapes, such a requirement may trap the algorithm in a neighborhood of sub-optimal solutions. We study a non-monotone direct-search alternative where the trial function value is compared with the largest objective function obtained through the $M$ most recent distinct iterates. This max-$M$ non-monotone condition permits temporary increases in the objective function and can help navigate narrow curved valleys; however, its theoretical analysis is significantly more challenging due to the lack of monotonic decrease. In this paper, we develop a comprehensive complexity theory for the max-$M$ non-monotone direct-search in both deterministic and stochastic DFO problems. For deterministic objectives, we establish a worst-case iteration bound for a complete poll based on a positive spanning set and an expected iteration bound for a probabilistic-descent poll. We then analyze a stochastic variant using independent function estimates and show the expected iteration complexity under tail-bound assumptions of the stochastic errors. All three results have the standard complexity of $\\mathcal{O}(ε^{-2})$, which matches the iteration complexity of monotone direct-search methods. Our theory is enabled by a new family of merit functions that correct the stored objective values by ordered multiples of the squared stepsize, together with a renewal-reward stopping-time argument for the probabilistic methods.",
+      "rating": 3,
+      "summary_en": "In derivative-free optimization (DFO), one minimizes functions for which the gradient is unavailable or expensive to compute. In many applications, objective function values and gradients are noisy due to simulations or system randomness. A class of standard direct-search methods for DFO accept a trial point when it decreases the objective function by an amount proportional to the squared stepsize. However, when applied to complex landscapes, such a requirement may trap the algorithm in a neighborhood of sub-optimal solutions. We study a non-monotone direct-search alternative where the trial function value is compared with the largest objective function obtained through the $M$ most recent distinct iterates. This max-$M$ non-monotone condition permits temporary increases in the objective function and can help navigate narrow curved valleys; however, its theoretical analysis is significantly more challenging due to the lack of monotonic decrease. In this paper, we develop a comprehensive complexity theory for the max-$M$ non-monotone direct-search in both deterministic and stochastic DFO problems. For deterministic objectives, we establish a worst-case iteration bound for a complete poll based on a positive spanning set and an expected iteration bound for a probabilistic-descent poll. We then analyze a stochastic variant using independent function estimates and show the expected iteration complexity under tail-bound assumptions of the stochastic errors. All three results have the standard complexity of $\\mathcal{O}(ε^{-2})$, which matches the iteration complexity of monotone direct-search methods. Our theory is enabled by a new family of merit functions that correct the stored objective values by ordered multiples of the squared stepsize, together with a renewal-reward stopping-time argument for the probabilistic methods.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-09-11"
     }
   ]
 }
