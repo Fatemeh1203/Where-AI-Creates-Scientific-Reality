@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 111,
+  "count": 112,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5104,6 +5104,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-09-11"
+    },
+    {
+      "id": "arXiv:2609.14748v1",
+      "title_en": "Beyond Dead Reckoning: A Point of View on Camera--DAS--GNSS Continuity in Road Tunnels",
+      "title_fa": "Beyond Dead Reckoning: A Point of View on Camera--DAS--GNSS Continuity in Road Tunnels",
+      "authors": "Lyes Saad Saoud, Hesham A. Rakha, Mona Jaber, Moussa Ayyash",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2609.14748",
+      "link": "http://arxiv.org/abs/2609.14748v1",
+      "scholar": "https://scholar.google.com/scholar?q=Beyond+Dead+Reckoning%3A+A+Point+of+View+on+Camera--DAS--GNSS+Continuity+in+Road+Tunnels",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "cs.RO"
+      ],
+      "research_area": "Distributed Acoustic Sensing (DAS)",
+      "published": "2026-09-13",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Road tunnels remove satellite visibility where connected and automated vehicles still require continuous, attributable, and integrity-bounded positioning. This Point of View argues that tunnel localization should be treated as infrastructure-assisted cross-modal track continuity, not as extrapolation from the last trusted satellite fix. A trusted portal satellite solution provides the global anchor, distributed acoustic sensing (DAS) continuous motion evidence, cameras sparse identity and lane anchors, onboard sensing short-term dynamics, and edge computing association, fusion, integrity monitoring, and guarded reacquisition. Ground truth is reserved for offline calibration and validation. The article develops a falsifiable research and deployment agenda for progressing from synchronized multimodal evidence to validated, integrity-aware tunnel positioning continuity.",
+      "rating": 3,
+      "summary_en": "Road tunnels remove satellite visibility where connected and automated vehicles still require continuous, attributable, and integrity-bounded positioning. This Point of View argues that tunnel localization should be treated as infrastructure-assisted cross-modal track continuity, not as extrapolation from the last trusted satellite fix. A trusted portal satellite solution provides the global anchor, distributed acoustic sensing (DAS) continuous motion evidence, cameras sparse identity and lane anchors, onboard sensing short-term dynamics, and edge computing association, fusion, integrity monitoring, and guarded reacquisition. Ground truth is reserved for offline calibration and validation. The article develops a falsifiable research and deployment agenda for progressing from synchronized multimodal evidence to validated, integrity-aware tunnel positioning continuity.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-09-16"
     }
   ]
 }
