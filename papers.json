@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 117,
+  "count": 118,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5374,6 +5374,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-09-23"
+    },
+    {
+      "id": "arXiv:2609.28793v1",
+      "title_en": "Monitoring Urban Traffic Dynamics at Fine Spatiotemporal Resolution Using Distributed Acoustic Sensing and Deep Learning",
+      "title_fa": "Monitoring Urban Traffic Dynamics at Fine Spatiotemporal Resolution Using Distributed Acoustic Sensing and Deep Learning",
+      "authors": "Hao Tian, Heng Cai, Xiaowei Chen, Yifan Yang",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2609.28793",
+      "link": "http://arxiv.org/abs/2609.28793v1",
+      "scholar": "https://scholar.google.com/scholar?q=Monitoring+Urban+Traffic+Dynamics+at+Fine+Spatiotemporal+Resolution+Using+Distributed+Acoustic+Sensing+and+Deep+Learning",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "cs.LG"
+      ],
+      "research_area": "Distributed Acoustic Sensing (DAS)",
+      "published": "2026-09-23",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Mapping the distribution of traffic dynamics at high spatiotemporal resolution is a fundamental question in transportation research. Distributed acoustic sensing (DAS), an innovative seismic observation tool, emerges as a promising solution for real-time urban traffic monitoring at high spatial and temporal scales. Distributed acoustic sensing repurposes existing underground fiber-optic cables as dense, continuous sensor arrays, enabling passive and privacy-preserving monitoring of roadway traffic activity at meter-level spatial and second-level temporal resolution. This study examines whether integrating DAS and deep learning models can serve as a continuous and efficient urban traffic observatory for revealing urban traffic dynamics (i.e. traffic volume and congestion, event-driven changes) at high spatiotemporal resolution. Using a DAS deployment along a roadway network in the City of College Station, Texas, USA, this study develops a deep learning-empowered analytical framework that converts raw ground vibration waveforms into spatiotemporal representations, detects vehicle trajectory, and infers traffic states from aggregated traffic volume and speed. A hybrid training strategy combining synthetic and manually annotated DAS images is used to improve vehicle detection under noisy and congested conditions, with model outputs further aggregated to characterize system-level traffic dynamics.",
+      "rating": 3,
+      "summary_en": "Mapping the distribution of traffic dynamics at high spatiotemporal resolution is a fundamental question in transportation research. Distributed acoustic sensing (DAS), an innovative seismic observation tool, emerges as a promising solution for real-time urban traffic monitoring at high spatial and temporal scales. Distributed acoustic sensing repurposes existing underground fiber-optic cables as dense, continuous sensor arrays, enabling passive and privacy-preserving monitoring of roadway traffic activity at meter-level spatial and second-level temporal resolution. This study examines whether integrating DAS and deep learning models can serve as a continuous and efficient urban traffic observatory for revealing urban traffic dynamics (i.e. traffic volume and congestion, event-driven changes) at high spatiotemporal resolution. Using a DAS deployment along a roadway network in the City of College Station, Texas, USA, this study develops a deep learning-empowered analytical framework that converts raw ground vibration waveforms into spatiotemporal representations, detects vehicle trajectory, and infers traffic states from aggregated traffic volume and speed. A hybrid training strategy combining synthetic and manually annotated DAS images is used to improve vehicle detection under noisy and congested conditions, with model outputs further aggregated to characterize system-level traffic dynamics.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-09-25"
     }
   ]
 }
