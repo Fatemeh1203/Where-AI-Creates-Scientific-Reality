@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 119,
+  "count": 120,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5464,6 +5464,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-10-05"
+    },
+    {
+      "id": "arXiv:2610.08041v1",
+      "title_en": "A Continuous High Precision Localization Method for AGVs Based on Interferometric FBG Array Sensing and Hybrid Deep Learning",
+      "title_fa": "A Continuous High Precision Localization Method for AGVs Based on Interferometric FBG Array Sensing and Hybrid Deep Learning",
+      "authors": "Laiming Wu, Xin Gui, Hui Cao, Yunchuan Zhang, Haiyang Wang, Jiaqi Wang, Zhengying Li",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2610.08041",
+      "link": "http://arxiv.org/abs/2610.08041v1",
+      "scholar": "https://scholar.google.com/scholar?q=A+Continuous+High+Precision+Localization+Method+for+AGVs+Based+on+Interferometric+FBG+Array+Sensing+and+Hybrid+Deep+Learning",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "eess.SP"
+      ],
+      "research_area": "Fiber Bragg Grating (FBG)",
+      "published": "2026-10-06",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "High precision continuous localization is a fundamental challenge for automated guided vehicles (AGVs) operating in electromagnetically sensitive industrial environments. To mitigate the continuity limitations of conventional discrete localization methods and the accuracy limitations of existing continuous localization methods, this paper proposes a continuous AGV localization method that integrates interferometric fiber Bragg grating (FBG) array sensing with a hybrid deep learning framework. We first design a shallowly buried interferometric FBG array sensing track to enable the stable acquisition of high-quality signals. The received sensing signals are subsequently parameterized and preprocessed in a task-oriented manner, in which a multichannel joint representation is constructed using a sliding time window. A hybrid deep learning framework is developed to estimate AGV position from multichannel FBG response signals by jointly exploiting inter-channel spatial correlation and temporal continuity in the measurement sequence. Experimental results show that the proposed method achieves a mean absolute error (MAE) of less than 2 cm under complex industrial conditions, proving its effectiveness and robustness in practical AGV localization scenarios.",
+      "rating": 4,
+      "summary_en": "High precision continuous localization is a fundamental challenge for automated guided vehicles (AGVs) operating in electromagnetically sensitive industrial environments. To mitigate the continuity limitations of conventional discrete localization methods and the accuracy limitations of existing continuous localization methods, this paper proposes a continuous AGV localization method that integrates interferometric fiber Bragg grating (FBG) array sensing with a hybrid deep learning framework. We first design a shallowly buried interferometric FBG array sensing track to enable the stable acquisition of high-quality signals. The received sensing signals are subsequently parameterized and preprocessed in a task-oriented manner, in which a multichannel joint representation is constructed using a sliding time window. A hybrid deep learning framework is developed to estimate AGV position from multichannel FBG response signals by jointly exploiting inter-channel spatial correlation and temporal continuity in the measurement sequence. Experimental results show that the proposed method achieves a mean absolute error (MAE) of less than 2 cm under complex industrial conditions, proving its effectiveness and robustness in practical AGV localization scenarios.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-10-07"
     }
   ]
 }
