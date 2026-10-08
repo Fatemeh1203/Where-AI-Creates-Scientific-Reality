@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 120,
+  "count": 121,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5509,6 +5509,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-10-07"
+    },
+    {
+      "id": "arXiv:2610.09289v1",
+      "title_en": "Bridge Vibrations as Persistent Seismic Sources for Time-lapse Imaging of River Corridors with Distributed Acoustic Sensing",
+      "title_fa": "Bridge Vibrations as Persistent Seismic Sources for Time-lapse Imaging of River Corridors with Distributed Acoustic Sensing",
+      "authors": "Haipeng Li, Jingxiao Liu, Doyun Hwang, Hae Young Noh, Biondo Biondi",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2610.09289",
+      "link": "http://arxiv.org/abs/2610.09289v1",
+      "scholar": "https://scholar.google.com/scholar?q=Bridge+Vibrations+as+Persistent+Seismic+Sources+for+Time-lapse+Imaging+of+River+Corridors+with+Distributed+Acoustic+Sensing",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "physics.geo-ph"
+      ],
+      "research_area": "Distributed Acoustic Sensing (DAS)",
+      "published": "2026-10-07",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Fluvial corridors mediate dynamic river-groundwater exchanges and support major transportation infrastructure, yet continuous subsurface monitoring remains limited by sparse point sensors and infrequent time-lapse surveys. Addressing this observational gap is critical during extreme flood events, when transient saturation, pore-pressure buildup, and structural scour drive complex hydro-mechanical changes that threaten both riparian slope stability and bridge foundations. Here, we demonstrate that traffic-excited highway bridges act as persistent, spatially fixed seismic sources; their vibrations, recorded on roadside telecommunication fiber with Distributed Acoustic Sensing (DAS), enable time-lapse imaging of river corridors. We evaluate this approach using dark fiber recordings along South Korea's Gyeongbu Expressway during a record monsoon flood in July 2025, targeting a 430 m multi-span bridge crossing the Miho River. Vehicle impacts excite flexural resonances of the bridge deck, generating a discrete spectral comb of fundamental-mode Rayleigh waves in the surrounding ground; these 3-6 Hz waves propagate beyond 400 m across both riverbanks to image the alluvial section down to bedrock. Because bridge-structure geometry constrains the source location and dominant modal frequencies, virtual source gathers achieve rapid convergence within 5 min of ballistic wave stacking with high waveform repeatability over the recording period. Relative seismic velocity (dv/v) monitoring resolves velocity drops up to 1.0% during flood passage associated with heavy precipitation and river stage rise, consistent with hydrological softening of the riparian sediments. These results demonstrate that traffic-excited bridges provide persistent, repeatable seismic illumination, turning roadside telecommunication cables into dense arrays for both hydrogeophysical and civil infrastructure applications.",
+      "rating": 4,
+      "summary_en": "Fluvial corridors mediate dynamic river-groundwater exchanges and support major transportation infrastructure, yet continuous subsurface monitoring remains limited by sparse point sensors and infrequent time-lapse surveys. Addressing this observational gap is critical during extreme flood events, when transient saturation, pore-pressure buildup, and structural scour drive complex hydro-mechanical changes that threaten both riparian slope stability and bridge foundations. Here, we demonstrate that traffic-excited highway bridges act as persistent, spatially fixed seismic sources; their vibrations, recorded on roadside telecommunication fiber with Distributed Acoustic Sensing (DAS), enable time-lapse imaging of river corridors. We evaluate this approach using dark fiber recordings along South Korea's Gyeongbu Expressway during a record monsoon flood in July 2025, targeting a 430 m multi-span bridge crossing the Miho River. Vehicle impacts excite flexural resonances of the bridge deck, generating a discrete spectral comb of fundamental-mode Rayleigh waves in the surrounding ground; these 3-6 Hz waves propagate beyond 400 m across both riverbanks to image the alluvial section down to bedrock. Because bridge-structure geometry constrains the source location and dominant modal frequencies, virtual source gathers achieve rapid convergence within 5 min of ballistic wave stacking with high waveform repeatability over the recording period. Relative seismic velocity (dv/v) monitoring resolves velocity drops up to 1.0% during flood passage associated with heavy precipitation and river stage rise, consistent with hydrological softening of the riparian sediments. These results demonstrate that traffic-excited bridges provide persistent, repeatable seismic illumination, turning roadside telecommunication cables into dense arrays for both hydrogeophysical and civil infrastructure applications.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-10-08"
     }
   ]
 }
