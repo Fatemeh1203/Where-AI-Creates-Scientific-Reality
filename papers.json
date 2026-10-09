@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 121,
+  "count": 122,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5554,6 +5554,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-10-08"
+    },
+    {
+      "id": "arXiv:2610.11856v1",
+      "title_en": "RF-Resolved RIN Engineering of High-Power CW Yb Fiber Laser Architectures Using Seed Topology, Seed Power, Pumping Geometry and Cavity FSR",
+      "title_fa": "RF-Resolved RIN Engineering of High-Power CW Yb Fiber Laser Architectures Using Seed Topology, Seed Power, Pumping Geometry and Cavity FSR",
+      "authors": "Anitta Augustine, V. Meher, Shantanu Dambare, V. Balaswamy",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2610.11856",
+      "link": "http://arxiv.org/abs/2610.11856v1",
+      "scholar": "https://scholar.google.com/scholar?q=RF-Resolved+RIN+Engineering+of+High-Power+CW+Yb+Fiber+Laser+Architectures+Using+Seed+Topology%2C+Seed+Power%2C+Pumping+Geometry+and+Cavity+FSR",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "physics.optics"
+      ],
+      "research_area": "Fiber Bragg Grating (FBG)",
+      "published": "2026-10-08",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "We report, to the best of our knowledge, the first controlled, like-for-like experimental mapping of how four practical design parameters--seed-cavity topology, seed power, amplifier pumping geometry, and seed-cavity free spectral range (FSR)--jointly shape the radio-frequency (RF)-resolved relative intensity noise (RIN) of high-power continuous-wave (CW) Yb-doped fiber lasers. We compare a standalone bidirectional fiber Bragg grating (FBG) oscillator, an FBG-seeded master-oscillator power amplifier (MOPA), and unidirectional ring-seeded MOPAs with FSRs of approximately 11.5 and 5 MHz, all near 1064 nm at a common 72 W output, with RIN measured from 10 kHz to 1 GHz. Across all settings, the low-frequency RIN is technical-noise limited and nearly architecture-independent, whereas RIN above 160 kHz is governed by the seed-cavity topology and its transfer through the amplifier. Higher seed power suppresses the mid- and high-frequency RIN, but the seed-alone and amplified-output comparison reveals opposite transfer for the two topologies: for FBG seeding the 2 MHz-1 GHz RMS RIN increases through amplification (3.66 percent to 4.14 percent at 15 W seed), whereas for ring seeding it decreases (1.47 percent to 1.35 percent). Forward pumping gives the best power-scaling/noise trade-off, while reducing the ring FSR from approximately 11.5 to 5 MHz preserves the high-frequency RIN advantage, confirming it is not a mode-spacing effect. At matched conditions, ring seeding lowers the integrated RMS RIN by 2-3 times (160 kHz-2 MHz) and approximately 3 times (2 MHz-1 GHz, approximately 9-10 dB to near -127.4 dBc/Hz). These results yield band-resolved design rules linking each band to its dominant lever. The unidirectional ring-seeded MOPA thus offers a simple, scalable route to broadband pump-RIN suppression for nonlinear and frequency-conversion photonics.",
+      "rating": 4,
+      "summary_en": "We report, to the best of our knowledge, the first controlled, like-for-like experimental mapping of how four practical design parameters--seed-cavity topology, seed power, amplifier pumping geometry, and seed-cavity free spectral range (FSR)--jointly shape the radio-frequency (RF)-resolved relative intensity noise (RIN) of high-power continuous-wave (CW) Yb-doped fiber lasers. We compare a standalone bidirectional fiber Bragg grating (FBG) oscillator, an FBG-seeded master-oscillator power amplifier (MOPA), and unidirectional ring-seeded MOPAs with FSRs of approximately 11.5 and 5 MHz, all near 1064 nm at a common 72 W output, with RIN measured from 10 kHz to 1 GHz. Across all settings, the low-frequency RIN is technical-noise limited and nearly architecture-independent, whereas RIN above 160 kHz is governed by the seed-cavity topology and its transfer through the amplifier. Higher seed power suppresses the mid- and high-frequency RIN, but the seed-alone and amplified-output comparison reveals opposite transfer for the two topologies: for FBG seeding the 2 MHz-1 GHz RMS RIN increases through amplification (3.66 percent to 4.14 percent at 15 W seed), whereas for ring seeding it decreases (1.47 percent to 1.35 percent). Forward pumping gives the best power-scaling/noise trade-off, while reducing the ring FSR from approximately 11.5 to 5 MHz preserves the high-frequency RIN advantage, confirming it is not a mode-spacing effect. At matched conditions, ring seeding lowers the integrated RMS RIN by 2-3 times (160 kHz-2 MHz) and approximately 3 times (2 MHz-1 GHz, approximately 9-10 dB to near -127.4 dBc/Hz). These results yield band-resolved design rules linking each band to its dominant lever. The unidirectional ring-seeded MOPA thus offers a simple, scalable route to broadband pump-RIN suppression for nonlinear and frequency-conversion photonics.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-10-09"
     }
   ]
 }
