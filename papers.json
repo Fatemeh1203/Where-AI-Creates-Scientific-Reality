@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 125,
+  "count": 126,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5736,6 +5736,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-10-15"
+    },
+    {
+      "id": "arXiv:2610.24866v1",
+      "title_en": "Random-subspace Ellipsoidal Trust-region Methods for Derivative-free Optimization",
+      "title_fa": "Random-subspace Ellipsoidal Trust-region Methods for Derivative-free Optimization",
+      "authors": "Yiwen Chen, Pengcheng Xie",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2610.24866",
+      "link": "http://arxiv.org/abs/2610.24866v1",
+      "scholar": "https://scholar.google.com/scholar?q=Random-subspace+Ellipsoidal+Trust-region+Methods+for+Derivative-free+Optimization",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "math.OC"
+      ],
+      "research_area": "Distributed Fiber Optic Sensing (DFOS)",
+      "published": "2026-10-17",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Random-subspace model-based methods offer a promising approach to solving derivative-free optimization (DFO) problems in high dimensions. However, the usual ratio of actual to predicted reduction assesses model agreement at the trial point without directly measuring subspace quality. An accurate prediction in a poorly aligned subspace may therefore trigger trust-region expansion in all directions. We introduce Random-subspace Ellipsoidal TRust-region Optimization (RETRO), a framework for unconstrained DFO using ellipsoidal trust regions. Its trust-region updates combine global size changes with additional expansion or contraction within the sampled subspace, reflecting where the trial step was computed. We define an ellipsoidal subspace alignment measure that accounts for both the subspace and trust-region shape, and analyze Haar-uniform sampling and metric-guided sampling based on the current shape matrix. We establish almost-sure first-order liminf convergence and an $\\mathcal{O}(ε^{-2})$ bound on the expected number of iterations required to reach an iterate with gradient norm at most $ε$. Numerical experiments on projected low-rank problems in dimension $1000$ show that using ellipsoidal shape information in subspace selection can reduce function evaluation costs relative to ball-based QARSTA, with the most pronounced improvements occurring when the solver subspace dimension matches the projection rank.",
+      "rating": 4,
+      "summary_en": "Random-subspace model-based methods offer a promising approach to solving derivative-free optimization (DFO) problems in high dimensions. However, the usual ratio of actual to predicted reduction assesses model agreement at the trial point without directly measuring subspace quality. An accurate prediction in a poorly aligned subspace may therefore trigger trust-region expansion in all directions. We introduce Random-subspace Ellipsoidal TRust-region Optimization (RETRO), a framework for unconstrained DFO using ellipsoidal trust regions. Its trust-region updates combine global size changes with additional expansion or contraction within the sampled subspace, reflecting where the trial step was computed. We define an ellipsoidal subspace alignment measure that accounts for both the subspace and trust-region shape, and analyze Haar-uniform sampling and metric-guided sampling based on the current shape matrix. We establish almost-sure first-order liminf convergence and an $\\mathcal{O}(ε^{-2})$ bound on the expected number of iterations required to reach an iterate with gradient norm at most $ε$. Numerical experiments on projected low-rank problems in dimension $1000$ show that using ellipsoidal shape information in subspace selection can reduce function evaluation costs relative to ball-based QARSTA, with the most pronounced improvements occurring when the solver subspace dimension matches the projection rank.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-10-22"
     }
   ]
 }
