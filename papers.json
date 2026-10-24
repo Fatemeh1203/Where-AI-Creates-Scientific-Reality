@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 126,
+  "count": 127,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5781,6 +5781,52 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-10-22"
+    },
+    {
+      "id": "arXiv:2610.30401v1",
+      "title_en": "Semblance Distance Analysis for Channel Quality Assessment in Distributed Acoustic Sensing",
+      "title_fa": "Semblance Distance Analysis for Channel Quality Assessment in Distributed Acoustic Sensing",
+      "authors": "Reinhardt Rading, Markus Hoffmann, Norbert Meyners, Holger Schlarb, Céline Hadziioannou, Oliver Gerberding, Katharina-Sophie Isleif",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2610.30401",
+      "link": "http://arxiv.org/abs/2610.30401v1",
+      "scholar": "https://scholar.google.com/scholar?q=Semblance+Distance+Analysis+for+Channel+Quality+Assessment+in+Distributed+Acoustic+Sensing",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "eess.SP",
+        "physics.app-ph"
+      ],
+      "research_area": "Distributed Acoustic Sensing (DAS)",
+      "published": "2026-10-21",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Distributed Acoustic Sensing (DAS) enables dense, kilometer-scale measurements for seismic and environmental monitoring, but its performance is limited by spatially heterogeneous noise and fiber to ground coupling. Identifying high-quality sensing channels remains a challenge, particularly in nonstationary and complex noise environments where conventional signal to noise ratio (SNR) or correlation based approaches are insufficient. In this work, we introduce a statistical framework for DAS channel quality assessment based on a semblance distance metric, which quantifies the deviation of individual channels from a locally coherent reference signal. Unlike traditional pairwise similarity measures, the proposed method formulates channel selection as a distance estimation problem in a coherence enhanced signal space, enabling identification of incoherent noise and coupling induced distortions without requiring prior knowledge of installation conditions or noise statistics. The method is validated using multiple independent datasets, including recordings of the 2023 Turkish-Syrian earthquakes, a controlled seismic source experiment, and long-term continuous measurements. Across all scenarios, the approach identifies regions of low noise and strong coupling, with results that correlate with independent SNR and root mean square error (RMSE) metrics. Furthermore, the method detects subtle sub-decibel temporal variations in coupling conditions over seasonal timescales, demonstrating its capability for continuous fiber health monitoring. These results establish semblance distance analysis as a physically interpretable tool for DAS channel selection with direct applications in seismic imaging, structural health monitoring, and noise mitigation in high sensitivity systems such as gravitational wave detectors.",
+      "rating": 4,
+      "summary_en": "Distributed Acoustic Sensing (DAS) enables dense, kilometer-scale measurements for seismic and environmental monitoring, but its performance is limited by spatially heterogeneous noise and fiber to ground coupling. Identifying high-quality sensing channels remains a challenge, particularly in nonstationary and complex noise environments where conventional signal to noise ratio (SNR) or correlation based approaches are insufficient. In this work, we introduce a statistical framework for DAS channel quality assessment based on a semblance distance metric, which quantifies the deviation of individual channels from a locally coherent reference signal. Unlike traditional pairwise similarity measures, the proposed method formulates channel selection as a distance estimation problem in a coherence enhanced signal space, enabling identification of incoherent noise and coupling induced distortions without requiring prior knowledge of installation conditions or noise statistics. The method is validated using multiple independent datasets, including recordings of the 2023 Turkish-Syrian earthquakes, a controlled seismic source experiment, and long-term continuous measurements. Across all scenarios, the approach identifies regions of low noise and strong coupling, with results that correlate with independent SNR and root mean square error (RMSE) metrics. Furthermore, the method detects subtle sub-decibel temporal variations in coupling conditions over seasonal timescales, demonstrating its capability for continuous fiber health monitoring. These results establish semblance distance analysis as a physically interpretable tool for DAS channel selection with direct applications in seismic imaging, structural health monitoring, and noise mitigation in high sensitivity systems such as gravitational wave detectors.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-10-24"
     }
   ]
 }
