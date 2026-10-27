@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 127,
+  "count": 128,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -5827,6 +5827,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-10-24"
+    },
+    {
+      "id": "arXiv:2610.34224v1",
+      "title_en": "Fading Suppression in Distributed Acoustic Sensing Using Frequency-Domain Replica Reconstruction and Noise-Whitened Principal Component Combining",
+      "title_fa": "Fading Suppression in Distributed Acoustic Sensing Using Frequency-Domain Replica Reconstruction and Noise-Whitened Principal Component Combining",
+      "authors": "Ziang Chen, Zhiyang Xue, Huan Huang, Yuhan Jiang, Dongdong Zou, Gangxiang Shen, Yi Cai",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2610.34224",
+      "link": "http://arxiv.org/abs/2610.34224v1",
+      "scholar": "https://scholar.google.com/scholar?q=Fading+Suppression+in+Distributed+Acoustic+Sensing+Using+Frequency-Domain+Replica+Reconstruction+and+Noise-Whitened+Principal+Component+Combining",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "eess.SP"
+      ],
+      "research_area": "Distributed Acoustic Sensing (DAS)",
+      "published": "2026-10-25",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Frequency-selective Rayleigh fading in distributed acoustic sensing (DAS) based on phase-sensitive optical time-domain reflectometry (phi-OTDR) calls for effective diversity, but existing rotated-vector-sum (RVS) combining of nonoverlapping subbands incurs a spatial-resolution penalty. In this letter, we propose frequency-domain replica reconstruction and noise-whitened principal component combining (PCC) that combines a full-band replica and overlapping subbands using fixed weights estimated across probing periods after whitening correlated replica noise. This approach retains wider subbands and reduces reliance on noisy first-period alignment, balancing diversity with nominal spatial resolution. Experiments over approximately 7.1 km of fiber with 16-microsecond linear frequency-modulated (LFM) pulses recover 500-Hz vibrations with reduced background phase excursions and a 2.46-2.76-dB improvement in the vibration-to-background ratio (VBR) over the first-period RVS.",
+      "rating": 4,
+      "summary_en": "Frequency-selective Rayleigh fading in distributed acoustic sensing (DAS) based on phase-sensitive optical time-domain reflectometry (phi-OTDR) calls for effective diversity, but existing rotated-vector-sum (RVS) combining of nonoverlapping subbands incurs a spatial-resolution penalty. In this letter, we propose frequency-domain replica reconstruction and noise-whitened principal component combining (PCC) that combines a full-band replica and overlapping subbands using fixed weights estimated across probing periods after whitening correlated replica noise. This approach retains wider subbands and reduces reliance on noisy first-period alignment, balancing diversity with nominal spatial resolution. Experiments over approximately 7.1 km of fiber with 16-microsecond linear frequency-modulated (LFM) pulses recover 500-Hz vibrations with reduced background phase excursions and a 2.46-2.76-dB improvement in the vibration-to-background ratio (VBR) over the first-period RVS.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-10-27"
     }
   ]
 }
