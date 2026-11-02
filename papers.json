@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 132,
+  "count": 133,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -6055,6 +6055,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-10-30"
+    },
+    {
+      "id": "arXiv:2610.41503v1",
+      "title_en": "Ultraviolet Raman spectroscopy using multimode aluminum oxide waveguides",
+      "title_fa": "Ultraviolet Raman spectroscopy using multimode aluminum oxide waveguides",
+      "authors": "Roman Zakoldaev, Nikhil Jayakumar, Elie Vennat-Bresson, Jean-Claude Tinguely, Firehun Tsige Dullo, Balpreet Singh Ahluwalia",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2610.41503",
+      "link": "http://arxiv.org/abs/2610.41503v1",
+      "scholar": "https://scholar.google.com/scholar?q=Ultraviolet+Raman+spectroscopy+using+multimode+aluminum+oxide+waveguides",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "physics.optics"
+      ],
+      "research_area": "Photonic / Silicon-Photonics Sensors",
+      "published": "2026-10-30",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "Waveguide-based Raman spectroscopy offers a route toward compact and integrated photonic sensors. While most waveguide Raman platforms operate in the near-infrared, extending excitation toward the visible and ultraviolet is attractive because shorter excitation wavelengths can provide substantially stronger Raman scattering and access to resonance-enhanced molecular responses. This transition, however, places greater demands on the photonic material because of optical loss, absorption and waveguide-generated spectral background. Here, we investigate aluminum oxide ($Al_2O_3$) waveguides as a low-background platform for Raman spectroscopy at 532 nm and 325 nm using a back-collected excitation and detection geometry. At 532 nm, after normalization to the incident excitation power-time product, the measured $Al_2O_3$ background was more than two orders of magnitude lower than that of $Si_3N_4$. Under 325 nm excitation, the waveguides maintained a weak and reproducible spectral background across the investigated widths. Using immersion oil as a model analyte deposited over the waveguide surface, we demonstrate that analyte-specific Raman fingerprints can be recovered above the waveguide background at both wavelengths. Signal-to-background ratio and spectral contrast were used to quantify analyte visibility relative to the waveguide background, and both metrics consistently confirmed clear detection of the analyte bands. These results demonstrate that $Al_2O_3$ combines low measured spectral background with operation from the visible into the ultraviolet, providing a promising route toward integrated Raman spectroscopy at shorter excitation wavelengths.",
+      "rating": 4,
+      "summary_en": "Waveguide-based Raman spectroscopy offers a route toward compact and integrated photonic sensors. While most waveguide Raman platforms operate in the near-infrared, extending excitation toward the visible and ultraviolet is attractive because shorter excitation wavelengths can provide substantially stronger Raman scattering and access to resonance-enhanced molecular responses. This transition, however, places greater demands on the photonic material because of optical loss, absorption and waveguide-generated spectral background. Here, we investigate aluminum oxide ($Al_2O_3$) waveguides as a low-background platform for Raman spectroscopy at 532 nm and 325 nm using a back-collected excitation and detection geometry. At 532 nm, after normalization to the incident excitation power-time product, the measured $Al_2O_3$ background was more than two orders of magnitude lower than that of $Si_3N_4$. Under 325 nm excitation, the waveguides maintained a weak and reproducible spectral background across the investigated widths. Using immersion oil as a model analyte deposited over the waveguide surface, we demonstrate that analyte-specific Raman fingerprints can be recovered above the waveguide background at both wavelengths. Signal-to-background ratio and spectral contrast were used to quantify analyte visibility relative to the waveguide background, and both metrics consistently confirmed clear detection of the analyte bands. These results demonstrate that $Al_2O_3$ combines low measured spectral background with operation from the visible into the ultraviolet, providing a promising route toward integrated Raman spectroscopy at shorter excitation wavelengths.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-11-02"
     }
   ]
 }
