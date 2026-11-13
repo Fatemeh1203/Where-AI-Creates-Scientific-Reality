@@ -94,8 +94,8 @@ sensing. See [`docs/RESEARCH_MONITOR.md`](docs/RESEARCH_MONITOR.md) for the desi
 
 | Metric | Value |
 |---|---|
-| 🕒 Last update | **2026-11-12** |
-| 📚 Total papers tracked | **136** |
+| 🕒 Last update | **2026-11-13** |
+| 📚 Total papers tracked | **138** |
 | 🗓️ Papers this week | **3** |
 | 📰 Distinct journals/venues | **2** |
 
@@ -103,8 +103,8 @@ sensing. See [`docs/RESEARCH_MONITOR.md`](docs/RESEARCH_MONITOR.md) for the desi
 
 | Research area | Papers |
 |---|---|
-| Distributed Acoustic Sensing (DAS) | 32 |
-| Distributed Fiber Optic Sensing (DFOS) | 25 |
+| Distributed Acoustic Sensing (DAS) | 33 |
+| Distributed Fiber Optic Sensing (DFOS) | 26 |
 | Fiber Bragg Grating (FBG) | 24 |
 | Photonic / Silicon-Photonics Sensors | 21 |
 | Optical Fiber Sensors | 16 |
@@ -112,7 +112,7 @@ sensing. See [`docs/RESEARCH_MONITOR.md`](docs/RESEARCH_MONITOR.md) for the desi
 
 📈 Chart: [`Figures/papers_by_area.svg`](Figures/papers_by_area.svg) ·
 🗂️ Database: [`Database/papers.csv`](Database/papers.csv) ·
-📄 Latest report: [`Reports/2026-11-12.md`](Reports/2026-11-12.md)
+📄 Latest report: [`Reports/2026-11-13.md`](Reports/2026-11-13.md)
 
 <!-- FIBER-MONITOR:END -->
 
