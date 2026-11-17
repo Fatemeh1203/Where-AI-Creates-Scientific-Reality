@@ -1,6 +1,6 @@
 {
   "generated_by": "Optical Fiber Sensors Daily Research Monitor",
-  "count": 138,
+  "count": 139,
   "papers": [
     {
       "id": "arXiv:2606.26306",
@@ -6331,6 +6331,51 @@
       "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
       "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
       "date_added": "2026-11-13"
+    },
+    {
+      "id": "arXiv:2607.10416v2",
+      "title_en": "A Direction Adaptation Evolution Strategy for Noisy Derivative-Free Optimization",
+      "title_fa": "A Direction Adaptation Evolution Strategy for Noisy Derivative-Free Optimization",
+      "authors": "Morteza Kimiaei, Mahsa Yousefi",
+      "affiliation": "",
+      "country": "",
+      "journal": "arXiv (preprint)",
+      "publisher": "arXiv",
+      "doi": "10.48550/arXiv.2607.10416",
+      "link": "http://arxiv.org/abs/2607.10416v2",
+      "scholar": "https://scholar.google.com/scholar?q=A+Direction+Adaptation+Evolution+Strategy+for+Noisy+Derivative-Free+Optimization",
+      "open_access": "Yes (preprint)",
+      "citations": null,
+      "impact_factor": null,
+      "quartile": null,
+      "keywords": [
+        "math.OC"
+      ],
+      "research_area": "Distributed Fiber Optic Sensing (DFOS)",
+      "published": "2026-07-11",
+      "is_preprint": true,
+      "is_review": false,
+      "abstract": "In noisy derivative-free optimization (DFO), methods based on the matrix adaptation evolution strategy (MAES) often mistakenly identify points with spuriously good function values, undermining selection and leading to unreliable search directions. To address this, we develop a novel direction adaptation evolution strategy (DAES) that targets the algorithmic phases prone to noise propagation, combining selected-population search with complexity analysis. Fixing the transformation matrix to the identity, DAES employs a structured direction-generation mechanism consisting of symmetric sampling, joint sorting--selection of noisy values, partitioning of all sampled directions into three ranked groups, and construction of a heuristic search direction. Along this direction, a noisy derivative-free sufficient descent condition with extrapolation is applied. Using a probabilistic angle condition preserved through our proposed framework, we obtain, to the best of our knowledge, the first high-probability evaluation-complexity bounds for a noisy MAES-type method across nonconvex, convex, and strongly convex objectives, under bounded noise. Finally, experiments on 230 BARON BCP problems across eight noise levels compare DAES with five DFO solvers, notably MADFO, showing greater robustness at intermediate-to-small budgets.",
+      "rating": 2,
+      "summary_en": "In noisy derivative-free optimization (DFO), methods based on the matrix adaptation evolution strategy (MAES) often mistakenly identify points with spuriously good function values, undermining selection and leading to unreliable search directions. To address this, we develop a novel direction adaptation evolution strategy (DAES) that targets the algorithmic phases prone to noise propagation, combining selected-population search with complexity analysis. Fixing the transformation matrix to the identity, DAES employs a structured direction-generation mechanism consisting of symmetric sampling, joint sorting--selection of noisy values, partitioning of all sampled directions into three ranked groups, and construction of a heuristic search direction. Along this direction, a noisy derivative-free sufficient descent condition with extrapolation is applied. Using a probabilistic angle condition preserved through our proposed framework, we obtain, to the best of our knowledge, the first high-probability evaluation-complexity bounds for a noisy MAES-type method across nonconvex, convex, and strongly convex objectives, under bounded noise. Finally, experiments on 230 BARON BCP problems across eight noise levels compare DAES with five DFO solvers, notably MADFO, showing greater robustness at intermediate-to-small budgets.",
+      "summary_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "problem_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "problem_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "innovation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "innovation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "method_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "method_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "results_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "results_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "limitations_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "limitations_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "applications_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "applications_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "recommendation_en": "Auto-added from the source record; see the summary/abstract above. A fuller bilingual analysis is added when the analyst pass runs.",
+      "recommendation_fa": "به‌صورت خودکار از رکورد منبع افزوده شده؛ خلاصه/چکیده‌ی بالا را ببینید. تحلیل کامل دوزبانه در مرحله‌ی تحلیل‌گر افزوده می‌شود.",
+      "rating_reason_en": "Heuristic rating from metadata (recency, venue, review/citation signals); pending full review.",
+      "rating_reason_fa": "امتیاز اکتشافی بر پایه‌ی فراداده (تازگی، اعتبار منبع، نشانه‌های مروری/استناد)؛ در انتظار بازبینی کامل.",
+      "date_added": "2026-11-17"
     }
   ]
 }
